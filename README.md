@@ -65,7 +65,7 @@ IMPORTANT: You don't need to build any kind of backend for this exercise. No nee
 Bonus points
 
 - You wrote unit tests for your JavaScript
-- Your application is a SPA
+- Your application is an SPA
 - You wrote server side code instead of using a utility application like `http-server`
 - You implement actual endpoints for the requests to the server
 
