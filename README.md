@@ -21,6 +21,7 @@ Requirements
 
 - You *MUST* use HTML5, CSS3 and a JS framework or Vanilla JS
 - Your code *MUST* be in english (variable names, comments etc..)
+- You MUST write in ES6 or ES7 (so no TypeScript, CoffeeScript or other superset languages)
 - You *MAY* comment your code wherever you feel necessary
 - You *SHOULD NOT* use jQuery or Twitter's Bootstrap
 - You *SHOULD* use a CSS preprocessor or postprocessor
