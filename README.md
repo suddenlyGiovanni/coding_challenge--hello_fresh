@@ -21,9 +21,9 @@ Requirements
 
 - You *MUST* use HTML5, CSS3 and a JS framework or Vanilla JS
 - Your code *MUST* be in english (variable names, comments etc..)
-- You MUST write in ES6 or ES7 (so no TypeScript, CoffeeScript or other superset languages)
+- You *MUST* write in ES6 or ES7 (so no TypeScript, CoffeeScript or other superset languages)
 - You *MAY* comment your code wherever you feel necessary
-- You *SHOULD NOT* use jQuery or Twitter's Bootstrap
+- You *SHOULD NOT* use jQuery, Twitter's Bootstrap or any other CSS framework
 - You *SHOULD* use a CSS preprocessor or postprocessor
 - You *SHOULD* use some kind of server to serve your code, something like [http-server](https://github.com/indexzero/http-server) would do
 - You *MUST* automate all the compilation processes with a task running utility (eg. Gulp) preferred is a self-written solution
@@ -61,6 +61,7 @@ IMPORTANT: You don't need to build any kind of backend for this exercise. No nee
 - You implemented a proper grid
 - Your app is responsive
 - Your app is well structured
+- You implemented the rating functionality without using a third-party library
 
 Bonus points
 
@@ -68,5 +69,6 @@ Bonus points
 - Your application is an SPA
 - You wrote server side code instead of using a utility application like `http-server`
 - You implement actual endpoints for the requests to the server
+- Your app is deployed to Github Pages or some other hosting
 
 Good luck, and have fun!
