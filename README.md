@@ -44,9 +44,11 @@ It will contain two pages:
 
 Implement a login page with a form to login, it doesn't have to actually log you in or do any checks, but things like e-mail validation are appreciated!
 
-#### Recipe review page
+#### Recipe overview page
 
 This will show all the recipes that are attached.
+
+The following should be true for this page:
 
 - All the recipes will be displayed here
 - The recipes have to be shown with all the data in the JSON displayed in a user-friendly way
@@ -56,21 +58,24 @@ This will show all the recipes that are attached.
 Evaluation Criteria
 -------------------
 
-IMPORTANT: You don't need to build any kind of backend for this exercise. No need to store data in any database. It's perfectly fine to approach this as a refined front-end prototype. That being said, if you do want to take the time to build a backend for it your efforts will be taken into account.
+**IMPORTANT**: Building a back-end or adding a database to this test is optional. Although, it's perfectly fine to approach this test as a refined front-end prototype.
 
-- The app must run
-- Your app is lean and mean (small files that make the page look good)
-- You implemented a proper grid
-- Your app is responsive
-- Your app is well structured
-- You implemented the rating functionality without using a third-party library
+- The app must run.
+- Your app is lean and mean (small files that make the page look good).
+- You implemented a proper grid.
+- Your app is responsive.
+- Your app is well structured.
+- You implemented the rating functionality without using a third-party library.
 
 Bonus points
 
-- You wrote unit tests for your JavaScript
-- Your application is an SPA
-- You wrote server side code instead of using a utility application like `http-server`
-- You implement actual endpoints for the requests to the server
-- Your app is deployed to Github Pages or some other hosting
+- You wrote unit tests for your JavaScript.
+- Your application is an SPA.
+- You wrote server side code instead of using a utility application like `http-server`.
+- You implement actual endpoints to request the recipe data.
+- You use our own API instead of the JSON file, read how to do that [here](./USE_THE_API.md).
+- Your app is deployed to Github Pages or some other hosting.
+- Your application is isomporphic/universal.
+- You implemented actual authentication with the use of passport or something similar.
 
 Good luck, and have fun!
