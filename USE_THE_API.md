@@ -1,5 +1,7 @@
 # Using the HelloFresh API
 
+**This is part of a bonus point, no need to use it for the basic exercise.**
+
 First thing you need to do is fetch a token. You can do this by sending an HTTP POST request to our gateway, like so:
 
 ```sh
