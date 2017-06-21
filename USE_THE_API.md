@@ -23,7 +23,7 @@ There's two parameters here:
 - _Cuisine_; these are all kinds of cuisines to see the possible values you can run the following command:
 
 ```sh
-$ curl -XGET -H "Authorization: Bearer {access_token}" "https://gw.hellofresh.com/api/cuisines?country=us&locale=en-US"
+$ curl -XGET -H "Authorization: Bearer {access_token}" "https://gw.hellofresh.com/api/cuisines?country=us&locale=en-US&take=all"
 ```
 
 - _Order_; the following values are possible here: `calories; -calories; favorites; -favorites; date; -date; rating; -rating; time; -time; name; -name;`.
