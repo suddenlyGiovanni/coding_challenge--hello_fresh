@@ -21,14 +21,15 @@ Instructions
 Requirements
 ------------
 
-- You *MUST* use HTML5, CSS3 and a JS framework or Vanilla JS
+- You *MUST* write your test with modern HTML and JS (ES6 or ES7, so no TypeScript, CoffeeScript or other superset languages)
 - Your code *MUST* be in english (variable names, comments etc..)
-- You *MUST* write in ES6 or ES7 (so no TypeScript, CoffeeScript or other superset languages)
 - You *MAY* comment your code wherever you feel necessary
+- You *SHOULD* use webpack
+- You *MAY* design something nice, but you *COULD* also copy your designs from our [website](https://www.hellofresh.com/recipe-archive/collection/light)
 - You *SHOULD NOT* use jQuery, Twitter's Bootstrap or any other CSS framework
-- You *SHOULD* use a CSS preprocessor or postprocessor
+- You *SHOULD* use a CSS preprocessor or postprocessor, when you use CSS
+- You *COULD* use CSS-in-JS
 - You *SHOULD* use some kind of server to serve your code, something like [http-server](https://github.com/indexzero/http-server) would do
-- You *MUST* automate all the compilation processes with a task running utility (eg. Gulp) preferred is a self-written solution
 
 Exercise
 --------
