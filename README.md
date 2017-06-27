@@ -28,6 +28,7 @@ Requirements
 - You *MAY* design something nice, but you *COULD* also copy your designs from our [website](https://www.hellofresh.com/recipe-archive/collection/light)
 - You *SHOULD NOT* use jQuery, Twitter's Bootstrap or any other CSS framework
 - You *SHOULD* use a CSS preprocessor or postprocessor, when you use CSS
+- You *COULD* use CSS-in-JS
 - You *SHOULD* use some kind of server to serve your code, something like [http-server](https://github.com/indexzero/http-server) would do
 
 Exercise
