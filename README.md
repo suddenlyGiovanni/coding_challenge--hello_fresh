@@ -21,9 +21,8 @@ Instructions
 Requirements
 ------------
 
-- You *MUST* write your test with modern HTML and JS
+- You *MUST* write your test with modern HTML and JS (ES6 or ES7, so no TypeScript, CoffeeScript or other superset languages)
 - Your code *MUST* be in english (variable names, comments etc..)
-- You *MUST* write in ES6 or ES7 (so no TypeScript, CoffeeScript or other superset languages)
 - You *MAY* comment your code wherever you feel necessary
 - You *SHOULD* use webpack
 - You *MAY* design something nice, but you *COULD* also copy your designs from our [website](https://www.hellofresh.com/recipe-archive/collection/light)
