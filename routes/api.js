@@ -2,7 +2,7 @@
 const router = require( 'express' ).Router();
 const db = require( '../modules/dbQuery' );
 const { queryRecipes, queryCuisines } = require( '../modules/hfApi' );
-
+const { addNewUser } = require('../controllers/userController');
 // const recipes = require( '../recipes.json' );
 /*
 let secrets;
@@ -23,6 +23,9 @@ router.get( '/', ( req, res ) => {
     res.json( { message: 'api route working fine' } );
 } );
 // _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+router.post('/signup', addNewUser );
+
 
 
 // READ RECIPES

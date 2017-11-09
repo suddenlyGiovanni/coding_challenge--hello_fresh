@@ -5,19 +5,23 @@ const express = require( 'express' ),
     cookieParser = require( 'cookie-parser' ),
     cookieSession = require( 'cookie-session' ),
     compression = require( 'compression' ),
-    csrf = require( 'csurf' );
+    csrf = require( 'csurf' ),
+    mongoose = require( 'mongoose' );
 // favicon = require( 'serve-favicon' );
-
-// const jwt = require( 'express-jwt' );
-// const jwks = require( 'jwks-rsa' );
-// const cors = require( 'cors' );
 
 
 const index = require( './routes/index' );
-const api = require( './routes/api' )
+const api = require( './routes/api' );
 
 // EXPRESS
 const app = express();
+
+// Mongoose connection
+// Use native promises
+mongoose.Promise = global.Promise;
+mongoose.connect( 'mongodb://localhost/hello-fresh', {
+    useMongoClient: true
+} );
 
 // MIDDLEWARE __________________________________________________________________
 
@@ -36,22 +40,6 @@ app.use( bodyParser.urlencoded( { extended: true } ) );
 
 // app.use( cors() );
 
-// const authCheck = jwt( {
-//     secret: jwks.expressJwtSecret( {
-//         cache: true,
-//         rateLimit: true,
-//         jwksRequestsPerMinute: 5,
-//         // YOUR-AUTH0-DOMAIN name e.g https://prosper.auth0.com
-//         jwksUri: "{YOUR-AUTH0-DOMAIN}/.well-known/jwks.json"
-//     } ),
-//     // This is the identifier we set when we created the API
-//     audience: '{YOUR-API-AUDIENCE-ATTRIBUTE}',
-//     issuer: '{YOUR-AUTH0-DOMAIN}',
-//     algorithms: [ 'RS256' ]
-// } );
-
-
-
 // COOKIE PARSER
 app.use( cookieParser() );
 
@@ -62,16 +50,15 @@ app.use( cookieSession( {
 } ) );
 
 // CSURF
-app.use( csrf() );
-
-app.use( ( req, res, next ) => {
-    res.cookie( '__csrf__', req.csrfToken() );
-    next();
-} );
+// app.use( csrf() );
+//
+// app.use( ( req, res, next ) => {
+//     res.cookie( '__csrf__', req.csrfToken() );
+//     next();
+// } );
 
 
 // set the public folder where client stuff lives
-// app.use( express.static( path.join( __dirname, 'public' ) ) );
 // Express only serves static assets in production
 if ( process.env.NODE_ENV === 'production' ) {
     app.use( express.static( 'client/build' ) );
@@ -97,8 +84,6 @@ app.use( '/api/', api );
 app.get( '*', ( req, res ) => {
     res.sendFile( path.join( __dirname, './client/public' ) );
 } );
-
-
 
 
 module.exports = app;
