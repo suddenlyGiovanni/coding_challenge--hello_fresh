@@ -1,5 +1,5 @@
 const express = require( 'express' ),
-    // path = require( 'path' ),
+    path = require( 'path' ),
     logger = require( 'morgan' ),
     bodyParser = require( 'body-parser' ),
     cookieParser = require( 'cookie-parser' ),
@@ -8,7 +8,13 @@ const express = require( 'express' ),
     csrf = require( 'csurf' );
 // favicon = require( 'serve-favicon' );
 
+// const jwt = require( 'express-jwt' );
+// const jwks = require( 'jwks-rsa' );
+// const cors = require( 'cors' );
+
+
 const index = require( './routes/index' );
+const api = require( './routes/api' )
 
 // EXPRESS
 const app = express();
@@ -26,7 +32,25 @@ app.use( compression() );
 
 // BODY PARSER
 app.use( bodyParser.json() );
-app.use( bodyParser.urlencoded( { extended: false } ) );
+app.use( bodyParser.urlencoded( { extended: true } ) );
+
+// app.use( cors() );
+
+// const authCheck = jwt( {
+//     secret: jwks.expressJwtSecret( {
+//         cache: true,
+//         rateLimit: true,
+//         jwksRequestsPerMinute: 5,
+//         // YOUR-AUTH0-DOMAIN name e.g https://prosper.auth0.com
+//         jwksUri: "{YOUR-AUTH0-DOMAIN}/.well-known/jwks.json"
+//     } ),
+//     // This is the identifier we set when we created the API
+//     audience: '{YOUR-API-AUDIENCE-ATTRIBUTE}',
+//     issuer: '{YOUR-AUTH0-DOMAIN}',
+//     algorithms: [ 'RS256' ]
+// } );
+
+
 
 // COOKIE PARSER
 app.use( cookieParser() );
@@ -37,14 +61,6 @@ app.use( cookieSession( {
     maxAge: 1000 * 60 * 60 * 24 * 14
 } ) );
 
-
-// set the public folder where client stuff lives
-// app.use( express.static( path.join( __dirname, 'public' ) ) );
-// Express only serves static assets in production
-if ( process.env.NODE_ENV === 'production' ) {
-    app.use( express.static( 'client/build' ) );
-}
-
 // CSURF
 app.use( csrf() );
 
@@ -52,10 +68,24 @@ app.use( ( req, res, next ) => {
     res.cookie( '__csrf__', req.csrfToken() );
     next();
 } );
+
+
+// set the public folder where client stuff lives
+// app.use( express.static( path.join( __dirname, 'public' ) ) );
+// Express only serves static assets in production
+if ( process.env.NODE_ENV === 'production' ) {
+    app.use( express.static( 'client/build' ) );
+}
 // _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 // ROUTING _____________________________________________________________________
 app.use( '/', index );
+app.use( '/api/', api );
+// if no route match then..
+app.get( '*', ( req, res ) => {
+    res.sendFile( path.join( __dirname, './client/public' ) );
+} );
+
 
 // catch 404 and forward to error handler
 app.use( function ( req, res, next ) {
