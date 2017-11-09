@@ -1,8 +1,9 @@
 // ROUTE: --> /api
 const router = require( 'express' ).Router();
 const db = require( '../modules/dbQuery' );
-const hfGetToken = require('../modules/hfApi').getToken;
-const recipes = require( '../recipes.json' );
+const { queryRecipes, queryCuisines } = require( '../modules/hfApi' );
+
+// const recipes = require( '../recipes.json' );
 /*
 let secrets;
 if ( process.env.NODE_ENV == 'production' ) {
@@ -27,10 +28,20 @@ router.get( '/', ( req, res ) => {
 // READ RECIPES
 router.get( '/recipes', ( req, res ) => {
     console.log( 'API: ', 'method: GET ', '/api/recipes' );
-    let data = hfGetToken();
-    res.json(data);
-    // res.json( recipes );
+    queryRecipes()
+        .then( recipes => res.json( recipes ) )
+        .catch( err => console.error( err ) );
 } );
+// _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+// READ CUISINES
+router.get( '/cuisines', ( req, res ) => {
+    console.log( 'API: ', 'method: GET ', '/api/cuisines' );
+    queryCuisines()
+        .then( cuisines => res.json( cuisines ) )
+        .catch( err => console.error( err ) );
+} );
+// _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 
 /* MODULE EXPORTS */

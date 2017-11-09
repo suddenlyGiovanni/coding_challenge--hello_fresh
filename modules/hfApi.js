@@ -1,6 +1,11 @@
 const axios = require( 'axios' );
 const hfClientSecret = require( '../config/secrets.json' ).hfClientSecret;
 
+let validToken;
+let cuisines;
+
+
+
 const getToken = () => {
     const reqOptions = {
         method: 'POST',
@@ -27,7 +32,8 @@ const getToken = () => {
     return axios( reqOptions )
 
         .then( response => {
-            console.log( response.data );
+            // console.log( 'hfApi.js - getToken() - access_token: ', response.data.access_token );
+            validToken = response.data.access_token;
             return response.data.access_token;
         } )
 
@@ -51,7 +57,59 @@ const getToken = () => {
         } );
 };
 
-const getRecipes = ( bearerToken, cuisine, order ) => {
+
+
+
+const getCuisines = bearerToken => {
+
+    const reqOptions = {
+        method: 'GET',
+        url: '/api/cuisines',
+        baseURL: 'https://gw.hellofresh.com/',
+        headers: {
+            'Authorization': `Bearer ${bearerToken}`,
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        // `params` are the URL parameters to be sent with the request
+        // Must be a plain object or a URLSearchParams object
+        params: {
+            country: 'us',
+            locale: 'en-US',
+            take: 'all'
+        }
+    };
+
+    return axios( reqOptions )
+
+        .then( cuisineData => {
+            cuisines = cuisineData.data;
+            // console.log( cuisines  );
+            return cuisines;
+        } )
+
+        .catch( error => {
+            if ( error.response ) {
+                console.log( error.response.data );
+                console.log( error.response.status );
+                console.log( error.response.headers );
+                if ( error.response.status === 401 ) {
+                    return getToken()
+                        .then( token => getCuisines( token ) );
+                }
+            } else if ( error.request ) {
+                console.log( error.request );
+            } else {
+                console.log( 'Error', error.message );
+            }
+            console.log( error.config );
+        } );
+};
+
+
+
+
+const getRecipes = ( bearerToken, cuisine, order, limit, offset ) => {
+
     const reqOptions = {
         method: 'GET',
         url: '/api/recipes/search',
@@ -63,6 +121,10 @@ const getRecipes = ( bearerToken, cuisine, order ) => {
         // `params` are the URL parameters to be sent with the request
         // Must be a plain object or a URLSearchParams object
         params: {
+            country: 'us',
+            locale: 'en-US',
+            limit: limit || 9,
+            offset: offset || 0,
             cuisine: cuisine || 'italian',
             order: order || '-rating'
         },
@@ -70,16 +132,17 @@ const getRecipes = ( bearerToken, cuisine, order ) => {
 
     return axios( reqOptions )
 
-        .then( recipes => {
-            console.log( recipes.data );
-            return recipes.data;
-        } )
+        .then( recipes => recipes.data )
 
         .catch( error => {
             if ( error.response ) {
                 console.log( error.response.data );
                 console.log( error.response.status );
                 console.log( error.response.headers );
+                if ( error.response.status === 401 ) {
+                    return getToken()
+                        .then( token => getRecipes( token, cuisine, order, limit, offset ) );
+                }
             } else if ( error.request ) {
                 console.log( error.request );
             } else {
@@ -89,9 +152,30 @@ const getRecipes = ( bearerToken, cuisine, order ) => {
         } );
 };
 
-const queryRecipes = ( cuisine, order ) => {
+
+
+
+const queryCuisines = () => {
+    if ( cuisines ) { return Promise.resolve( cuisines ); }
+    if ( validToken ) { return getCuisines( validToken ); }
+    return getToken().then( token => getCuisines( token ) );
 
 };
 
+
+
+
+const queryRecipes = ( cuisine, order, limit, offset ) => {
+    if ( !validToken ) {
+        return getToken()
+            .then( token => getRecipes( token, cuisine, order, limit, offset ) );
+    }
+    return getRecipes( validToken, cuisine, order, limit, offset );
+};
+
+
+
+
 /* MODULE EXPORTS */
-module.exports.getToken = getToken;
+module.exports.queryRecipes = queryRecipes;
+module.exports.queryCuisines = queryCuisines;
