@@ -1,7 +1,6 @@
 // ROUTE: --> /api
 const router = require( 'express' ).Router();
-const db = require( '../modules/dbQuery' );
-const { queryRecipes, queryCuisines } = require( '../modules/hfApi' );
+const { queryRecipes, queryCuisines } = require( '../modules/helloFreshApi' );
 const { addNewUser } = require('../controllers/userController');
 // const recipes = require( '../recipes.json' );
 /*
