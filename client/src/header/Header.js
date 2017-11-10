@@ -16,7 +16,6 @@ class Header extends Component {
 
                     <div className='logo-container'>
                         <Link className='logo-link' to='#'>
-
                             <img className='logo-img'
                                 src='https://static.hellofresh.com/images/hellofresh-logo.svg?v=3'
                                 alt='HelloFresh' />
