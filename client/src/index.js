@@ -12,15 +12,15 @@ import reducers from './reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 
-import './styles/index.css';
+import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
 // CONTAINERS:
-import App from './containers/App';
+import App from './app/App';
 
 // COMPONENTS:
-import Login from './components/Login';
-import Registration from './components/Registration';
+import Login from './authentication/Login';
+import Registration from './authentication/Registration';
 
 export const store = createStore( reducers, composeWithDevTools( applyMiddleware( reduxPromise ) ) );
 
