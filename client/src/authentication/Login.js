@@ -1,6 +1,14 @@
+// REACT
 import React from 'react';
 
-const Login = () => {
+// higher order component that wrap LOGIN && REGISTRATION
+import FormWrapper from './FormWrapper';
+
+
+const Login = ( { handleInput, handleSubmit, error } ) => {
+
+    console.log( 'Login - RENDER');
+
     return (
         <div>
             <div className='row'>
@@ -16,7 +24,7 @@ const Login = () => {
 
                 <div className='col-xs-10 col-md-6'>
 
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className='row'>
                             <h2 className='col-xs-12'>Log In</h2>
                             <label
@@ -31,7 +39,8 @@ const Login = () => {
                                 maxLength='64'
                                 placeholder='username@domain.com'
                                 autoComplete='email'
-                                required />
+                                required
+                                onChange={handleInput} />
 
                             <label
                                 for='password'
@@ -42,7 +51,8 @@ const Login = () => {
                                 type='password'
                                 name='password'
                                 autoComplete='current-password'
-                                required />
+                                required
+                                onChange={handleInput} />
 
                             <input
                                 className='col-xs-12'
@@ -60,5 +70,4 @@ const Login = () => {
     );
 };
 
-
-export default Login;
+export default FormWrapper( Login, '/api/login' );

@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reduxPromise from 'redux-promise';
 // import allReducers from './reducers';
-import reducers from './reducers';
+import reducers from './reducers/reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 

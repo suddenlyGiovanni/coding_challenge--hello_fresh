@@ -6,9 +6,6 @@ import './Header.css';
 
 class Header extends Component {
 
-    constructor( props ) {
-        super( props );
-    }
 
     render() {
 
@@ -42,8 +39,8 @@ class Header extends Component {
 
 
                     <div className='btn-container'>
-                        <Link className='btn-link' to={this.props.pathname == '/' ? '/register' : '/'}>
-                            {this.props.pathname == '/' ? 'Register' : 'Login'}
+                        <Link className='btn-link' to={this.props.pathname === '/' ? '/register' : '/'}>
+                            {this.props.pathname === '/' ? 'Register' : 'Login'}
                         </Link>
                     </div>
 
