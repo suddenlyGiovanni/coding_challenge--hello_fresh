@@ -29,8 +29,8 @@ const router = (
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path='/' component={App}>
-                <IndexRoute component={Registration}/>
-                <Route path='/login' component={Login}/>
+                <IndexRoute component={Login}/>
+                <Route path='/register' component={Registration}/>
             </Route>
         </Router>
     </Provider>

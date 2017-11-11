@@ -5,7 +5,13 @@ import { Link } from 'react-router';
 import './Header.css';
 
 class Header extends Component {
+
+    constructor( props ) {
+        super( props );
+    }
+
     render() {
+
         return (
             <div>
                 <header id='header'>
@@ -15,7 +21,7 @@ class Header extends Component {
                     </div>
 
                     <div className='logo-container'>
-                        <Link className='logo-link' to='#'>
+                        <Link className='logo-link' to='/'>
                             <img className='logo-img'
                                 src='https://static.hellofresh.com/images/hellofresh-logo.svg?v=3'
                                 alt='HelloFresh' />
@@ -36,8 +42,8 @@ class Header extends Component {
 
 
                     <div className='btn-container'>
-                        <Link className='btn-link' to="#" target='_self'>
-                            Login
+                        <Link className='btn-link' to={this.props.pathname == '/' ? '/register' : '/'}>
+                            {this.props.pathname == '/' ? 'Register' : 'Login'}
                         </Link>
                     </div>
 
