@@ -7,7 +7,7 @@ import FormWrapper from './FormWrapper';
 
 const Login = ( { handleInput, handleSubmit, error } ) => {
 
-    console.log( 'Login - RENDER');
+    console.log( 'Login - RENDER' );
 
     return (
         <div>
@@ -27,6 +27,8 @@ const Login = ( { handleInput, handleSubmit, error } ) => {
                     <form onSubmit={handleSubmit}>
                         <div className='row'>
                             <h2 className='col-xs-12'>Log In</h2>
+                            {error && <div>Something went wrong. Please try again!</div>}
+
                             <label
                                 for='email'
                                 className='col-xs-12'>Email</label>
@@ -70,4 +72,4 @@ const Login = ( { handleInput, handleSubmit, error } ) => {
     );
 };
 
-export default FormWrapper( Login, '/api/login' );
+export default FormWrapper( Login, '/auth/login' );

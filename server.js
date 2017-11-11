@@ -2,60 +2,42 @@ const express = require( 'express' ),
     path = require( 'path' ),
     logger = require( 'morgan' ),
     bodyParser = require( 'body-parser' ),
-    cookieParser = require( 'cookie-parser' ),
-    cookieSession = require( 'cookie-session' ),
     compression = require( 'compression' ),
-    csrf = require( 'csurf' ),
-    mongoose = require( 'mongoose' );
-// favicon = require( 'serve-favicon' );
-
-
-const index = require( './routes/index' );
-const api = require( './routes/api' );
+    mongoose = require( 'mongoose' ),
+    favicon = require( 'serve-favicon' );
 
 // EXPRESS
 const app = express();
 
-// Mongoose connection
+// MONGOOSE CONNECTION
 // Use native promises
 mongoose.Promise = global.Promise;
 mongoose.connect( 'mongodb://localhost/hello-fresh', {
     useMongoClient: true
 } );
+// _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
-// MIDDLEWARE __________________________________________________________________
+// MIDDLEWAREs:
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// FAVICON
+app.use( favicon( path.join( __dirname, 'client/public', 'favicon.ico' ) ) );
+// _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
-// HTTP request logger middleware
+
+// MORGAN HTTP LOGGER
 app.use( logger( 'dev' ) );
+// _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
-// compression gZip response before sending them
+
+// COMPRESSION GZIP response before sending them
 app.use( compression() );
+// _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
 
 // BODY PARSER
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded( { extended: true } ) );
-
-// app.use( cors() );
-
-// COOKIE PARSER
-app.use( cookieParser() );
-
-// COOKIE SESSION
-app.use( cookieSession( {
-    secret: require( './config/secrets.json' ).sessionSecret,
-    maxAge: 1000 * 60 * 60 * 24 * 14
-} ) );
-
-// CSURF
-// app.use( csrf() );
-//
-// app.use( ( req, res, next ) => {
-//     res.cookie( '__csrf__', req.csrfToken() );
-//     next();
-// } );
+// _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 
 // set the public folder where client stuff lives
@@ -65,7 +47,8 @@ if ( process.env.NODE_ENV === 'production' ) {
 }
 // _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
-// error handler
+
+// ERROR HANDLER
 app.use( function ( err, req, res, next ) {
     // set locals, only providing error in development
     res.locals.message = err.message;
@@ -76,12 +59,27 @@ app.use( function ( err, req, res, next ) {
     console.log( err );
     res.sendStatus( 500 );
 } );
+// _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
 
 // ROUTING _____________________________________________________________________
-app.use( '/', index );
-app.use( '/api/', api );
-// if no route match then..
-app.get( '*', ( req, res ) => {
+
+/* SERVE THE STATIC FILES - APP */
+app.get( '/', ( req, res ) => res.sendFile(
+    path.join( __dirname, '../client/public' )
+) );
+
+
+/* SERVE THE AUTHENTICATION ROUTES */
+app.use( '/auth/', require( './routes/auth' ) );
+
+
+/* SERVE THE API ROUTES */
+app.use( '/api/', require( './routes/api' ) );
+
+
+/* CHATCH ALL ROUTES */
+app.all( '*', ( req, res ) => {
     res.sendFile( path.join( __dirname, './client/public' ) );
 } );
 

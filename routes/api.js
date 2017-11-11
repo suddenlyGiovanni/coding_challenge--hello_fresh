@@ -1,18 +1,6 @@
-// ROUTE: --> /api
+// ROUTE: --> /api/
 const router = require( 'express' ).Router();
 const { queryRecipes, queryCuisines } = require( '../modules/helloFreshApi' );
-const { addNewUser } = require('../controllers/userController');
-// const recipes = require( '../recipes.json' );
-/*
-let secrets;
-if ( process.env.NODE_ENV == 'production' ) {
-    secrets = process.env;
-    // in prod the secrets are environment variables
-} else {
-    secrets = require( '../config/secrets.json' );
-    // secrets.json is in .gitignore
-}
-*/
 
 
 
@@ -23,7 +11,6 @@ router.get( '/', ( req, res ) => {
 } );
 // _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
-router.post('/signup', addNewUser );
 
 
 
@@ -36,6 +23,8 @@ router.get( '/recipes', ( req, res ) => {
 } );
 // _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
+
+
 // READ CUISINES
 router.get( '/cuisines', ( req, res ) => {
     console.log( 'API: ', 'method: GET ', '/api/cuisines' );
@@ -44,6 +33,7 @@ router.get( '/cuisines', ( req, res ) => {
         .catch( err => console.error( err ) );
 } );
 // _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
 
 
 /* MODULE EXPORTS */

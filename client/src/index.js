@@ -29,9 +29,10 @@ const router = (
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path='/' component={App}>
-                <IndexRoute component={Login}/>
-                <Route path='/register' component={Registration}/>
+                <IndexRoute component={Login} />
+                <Route path='/register' component={Registration} />
             </Route>
+            <Route path="*" component={()=>(<div>NoMatch</div>)} />
         </Router>
     </Provider>
 );

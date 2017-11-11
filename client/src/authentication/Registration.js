@@ -1,7 +1,14 @@
+// REACT
 import React from 'react';
 
-const Registration = () => {
-    return(
+// higher order component that wrap LOGIN && REGISTRATION
+import FormWrapper from './FormWrapper';
+
+const Registration = ( { handleInput, handleSubmit, error} ) => {
+
+    console.log( 'Registration - RENDER' );
+
+    return (
         <div>
             <div className='row'>
                 <div className='col-md-2'></div>
@@ -16,10 +23,10 @@ const Registration = () => {
 
                 <div className='col-xs-10 col-md-6'>
 
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className='row'>
                             <h2 className='col-xs-12'>Register</h2>
-
+                            {error && <div>Something went wrong. Please try again!</div>}
                             <label
                                 for='firstName'
                                 className='col-xs-12'>First Name</label>
@@ -30,7 +37,8 @@ const Registration = () => {
                                 name='firstName'
                                 placeholder='john'
                                 autoComplete="given-name"
-                                required />
+                                required
+                                onChange={handleInput} />
 
 
                             <label
@@ -43,7 +51,8 @@ const Registration = () => {
                                 name='lastName'
                                 placeholder='doe'
                                 autoComplete="given-name"
-                                required />
+                                required
+                                onChange={handleInput} />
 
 
                             <label
@@ -58,7 +67,8 @@ const Registration = () => {
                                 maxLength='64'
                                 placeholder='username@domain.com'
                                 autoComplete='email'
-                                required />
+                                required
+                                onChange={handleInput} />
 
                             <label
                                 for='password'
@@ -69,7 +79,8 @@ const Registration = () => {
                                 type='password'
                                 name='password'
                                 autoComplete='new-password'
-                                required />
+                                required
+                                onChange={handleInput} />
 
                             <label
                                 for='bday'
@@ -80,7 +91,8 @@ const Registration = () => {
                                 type='date'
                                 id='bday'
                                 name='bday'
-                                pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}' />
+                                pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}'
+                                onChange={handleInput} />
 
                             <input
                                 className='col-xs-12'
@@ -97,4 +109,4 @@ const Registration = () => {
     );
 };
 
-export default Registration;
+export default FormWrapper( Registration, '/auth/register' );
