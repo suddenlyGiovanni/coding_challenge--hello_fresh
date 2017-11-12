@@ -28,9 +28,7 @@ const UserSchema = new mongoose.Schema( {
 // Compare the passed password with the value in the database. A model method.
 const comparePassword = ( password, callback ) => {
     // Load hash from password DB.
-    bcrypt
-        .compare( password, this.password )
-        .then( ( resp ) => callback( resp ) );
+    bcrypt.compare( password, this.password, callback );
 };
 
 UserSchema.methods.comparePassword = comparePassword;
@@ -44,8 +42,7 @@ UserSchema.pre( 'save', function saveHook( next ) {
         return next();
     }
 
-    return bcrypt
-        .genSalt()
+    return bcrypt.genSalt()
         .then( salt => bcrypt.hash( user.password, salt ) )
         .then( hash => {
             // replace a password string with hash value
