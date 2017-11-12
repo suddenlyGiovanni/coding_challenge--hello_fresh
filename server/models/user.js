@@ -5,11 +5,11 @@ const bcrypt = require( 'bcrypt' );
 const UserSchema = new mongoose.Schema( {
     firstName: {
         type: String,
-        unique: false,
+        unique: false
     },
     lastName: {
         type: String,
-        unique: false,
+        unique: false
     },
     bday: {
         type: Date
@@ -19,9 +19,9 @@ const UserSchema = new mongoose.Schema( {
         index: {
             unique: true
         },
-        lowercase: true,
+        lowercase: true
     },
-    password: String
+    password: String,
 } );
 // ATTACH A COMPAREPASSWORD METHOD TO USER SCHEMA.
 
@@ -30,7 +30,7 @@ const comparePassword = ( password, callback ) => {
     // Load hash from password DB.
     bcrypt
         .compare( password, this.password )
-        .then( () => callback() );
+        .then( ( resp ) => callback( resp ) );
 };
 
 UserSchema.methods.comparePassword = comparePassword;

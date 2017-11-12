@@ -30,14 +30,14 @@ const Login = ( { handleInput, handleSubmit, error } ) => {
                             {error && <div>Something went wrong. Please try again!</div>}
 
                             <label
-                                for='email'
+                                htmlFor='email'
                                 className='col-xs-12'>Email</label>
                             <input
                                 className='col-xs-12'
                                 id='email'
                                 type='email'
                                 name='email'
-                                minlength='3'
+                                minLength='3'
                                 maxLength='64'
                                 placeholder='username@domain.com'
                                 autoComplete='email'
@@ -45,7 +45,7 @@ const Login = ( { handleInput, handleSubmit, error } ) => {
                                 onChange={handleInput} />
 
                             <label
-                                for='password'
+                                htmlFor='password'
                                 className='col-xs-12'>Password</label>
                             <input
                                 className='col-xs-12'

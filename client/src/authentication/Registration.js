@@ -28,7 +28,7 @@ const Registration = ( { handleInput, handleSubmit, error} ) => {
                             <h2 className='col-xs-12'>Register</h2>
                             {error && <div>Something went wrong. Please try again!</div>}
                             <label
-                                for='firstName'
+                                htmlFor='firstName'
                                 className='col-xs-12'>First Name</label>
                             <input
                                 className='col-xs-12'
@@ -42,7 +42,7 @@ const Registration = ( { handleInput, handleSubmit, error} ) => {
 
 
                             <label
-                                for='lastName'
+                                htmlFor='lastName'
                                 className='col-xs-12'>Last Name</label>
                             <input
                                 className='col-xs-12'
@@ -56,14 +56,14 @@ const Registration = ( { handleInput, handleSubmit, error} ) => {
 
 
                             <label
-                                for='email'
+                                htmlFor='email'
                                 className='col-xs-12'>Email</label>
                             <input
                                 className='col-xs-12'
                                 id='email'
                                 type='email'
                                 name='email'
-                                minlength='3'
+                                minLength='3'
                                 maxLength='64'
                                 placeholder='username@domain.com'
                                 autoComplete='email'
@@ -71,7 +71,7 @@ const Registration = ( { handleInput, handleSubmit, error} ) => {
                                 onChange={handleInput} />
 
                             <label
-                                for='password'
+                                htmlFor='password'
                                 className='col-xs-12'>Password</label>
                             <input
                                 className='col-xs-12'
@@ -83,7 +83,7 @@ const Registration = ( { handleInput, handleSubmit, error} ) => {
                                 onChange={handleInput} />
 
                             <label
-                                for='bday'
+                                htmlFor='bday'
                                 className='col-xs-12'>Date of Birth</label>
 
                             <input

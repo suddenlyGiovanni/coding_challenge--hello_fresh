@@ -49,16 +49,16 @@ app.use(passport.initialize());
 
 
 // PASSPORT STRATEGIES
-// const localSignupStrategy = require('./server/passport/local-signup');
-// const localLoginStrategy = require('./server/passport/local-login');
-// passport.use('local-signup', localSignupStrategy);
-// passport.use('local-login', localLoginStrategy);
+const localSignupStrategy = require('./passport/local-signup');
+const localLoginStrategy = require('./passport/local-login');
+passport.use('local-signup', localSignupStrategy);
+passport.use('local-login', localLoginStrategy);
 // _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 
 // AUTHENTICAION CHECKER
-// const authCheckMiddleware = require('./server/middleware/auth-check');
-// app.use('/api', authCheckMiddleware);
+const authCheckMiddleware = require('./middleware/auth-check');
+app.use('/api', authCheckMiddleware);
 // _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 
@@ -81,12 +81,8 @@ app.use( function ( err, req, res, next ) {
 app.get( '/', ( req, res ) => res.sendFile(
     path.join( __dirname, '../client/public' )
 ) );
-
-
 /* SERVE THE AUTHENTICATION ROUTES */
 app.use( '/auth', require( './routes/auth' ) );
-
-
 /* SERVE THE API ROUTES */
 app.use( '/api', require( './routes/api' ) );
 
