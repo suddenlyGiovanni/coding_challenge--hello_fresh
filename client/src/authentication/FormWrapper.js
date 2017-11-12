@@ -36,7 +36,7 @@ const FormWrapper = ( Component, url ) => {
         return { error: state.error };
     };
 
-    const mapDispatchToProps = ( dispatch ) => {
+    const mapDispatchToProps = dispatch => {
         return {
             postSingupForm: signupForm  => dispatch( postSingupForm( signupForm ) ),
             postLoginForm: loginForm  => dispatch( postLoginForm( loginForm ) )

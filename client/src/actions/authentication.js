@@ -21,24 +21,44 @@ export function userAuthSuccess( user ) {
 
 export function postSingupForm( signupForm ) {
     console.log( 'REDUX - ACTION - fn: postSingupForm - signupForm = ', signupForm );
-    return( dispatch ) => {
-
+    // BUG: not yet able to enter next code block!!!
+    return dispatch => {
+        console.log( 'REDUX - ACTION - fn: postSingupForm - inside dispatch' );
         return axios
             .post( '/auth/signup', signupForm )
             .then( response => {
+                console.log( 'REDUX - ACTION - fn: postSingupForm - inside axios.post response' );
+
                 if ( response.status !== 200 ) {
                     throw Error( response.data );
                 }
-                dispatch( userAuthSuccess( response.data ) );
+                return response.data;
             } )
+            .then( authData => dispatch( userAuthSuccess( authData ) ) )
             .catch( err => dispatch( signupHasErrored( err ) ) );
     };
 }
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// export const postSingupForm = ( signupForm ) => dispatch => {
+//     console.log( 'REDUX - ACTION - fn: postSingupForm - inside dispatch' );
+//     axios.post( '/auth/signup', signupForm )
+//         .then( response => {
+//             console.log( 'REDUX - ACTION - fn: postSingupForm - inside axios.post response' );
+//
+//             if ( response.status !== 200 ) {
+//                 throw Error( response.data );
+//             }
+//             return response.data;
+//         } )
+//         .then( authData => dispatch( userAuthSuccess( authData ) ) )
+//         .catch( err => dispatch( signupHasErrored( err ) ) );
+// };
 
 export function postLoginForm( loginForm ) {
     console.log( 'REDUX-THUNK - ACTION - fn: postLoginForm - loginForm = ', loginForm );
-    return( dispatch ) => {
+    // BUG: not yet able to enter next code block!!!
+    return dispatch => {
+        console.log( 'REDUX - ACTION - fn: postLoginForm - inside dispatch' );
 
         return axios
             .post( '/auth/login', loginForm )
@@ -46,8 +66,11 @@ export function postLoginForm( loginForm ) {
                 if ( response.status !== 200 ) {
                     throw Error( response.data );
                 }
-                dispatch( userAuthSuccess( response.data ) );
+                return response.data;
             } )
+            .then( authData => dispatch( userAuthSuccess( authData ) ) )
             .catch( err => dispatch( loginHasErrored( err ) ) );
     };
 }
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
