@@ -1,5 +1,5 @@
 const axios = require( 'axios' );
-const hfClientSecret = require( '../config/secrets.json' ).hfClientSecret;
+const hfClientSecret = require( '../../config/secrets.json' ).hfClientSecret;
 
 let validToken;
 let cuisines;

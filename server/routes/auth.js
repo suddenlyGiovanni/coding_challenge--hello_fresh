@@ -2,10 +2,6 @@
 const router = require( 'express' ).Router();
 const validator = require( 'validator' );
 
-const { addNewUser } = require( '../controllers/userController' );
-
-
-
 
 /**
  * Validate the sign up form
@@ -93,6 +89,7 @@ const validateLoginForm = payload => {
 router.post( '/register', ( req, res ) => {
     console.log( 'API: ', 'method: POST ', '/auth/register - payload: ', req.body );
     const validationResult = validateRegisterForm( req.body );
+
     if ( !validationResult.success ) {
         return res.status( 400 ).json( {
             success: false,
@@ -114,6 +111,7 @@ router.post( '/register', ( req, res ) => {
 router.post( '/login', ( req, res ) => {
     console.log( 'API: ', 'method: POST ', '/auth/login - payload: ', req.body );
     const validationResult = validateLoginForm( req.body );
+
     if ( !validationResult.success ) {
         return res.status( 400 ).json( {
             success: false,

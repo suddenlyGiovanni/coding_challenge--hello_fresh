@@ -1,6 +1,6 @@
 // ROUTE: --> /api/
 const router = require( 'express' ).Router();
-const { queryRecipes, queryCuisines } = require( '../modules/helloFreshApi' );
+const { queryRecipes, queryCuisines } = require( '../controllers/hello-fresh-api' );
 
 
 

@@ -1,16 +1,18 @@
 // REACT
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory, } from 'react-router';
 
 // REDUX
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, } from 'redux';
 import reduxPromise from 'redux-promise';
+// import thunk from 'redux-thunk';
+import logger from 'redux-logger'
+
 // import allReducers from './reducers';
 import reducers from './reducers/reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
-
 
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
@@ -22,22 +24,17 @@ import App from './app/App';
 import Login from './authentication/Login';
 import Registration from './authentication/Registration';
 
-export const store = createStore( reducers, composeWithDevTools( applyMiddleware( reduxPromise ) ) );
+export const store = createStore( reducers, composeWithDevTools( applyMiddleware( reduxPromise, logger ) ) );
 
-
-const router = (
-    <Provider store={store}>
-        <Router history={browserHistory}>
-            <Route path='/' component={App}>
-                <IndexRoute component={Login} />
-                <Route path='/register' component={Registration} />
-            </Route>
-            <Route path="*" component={()=>(<div>NoMatch</div>)} />
-        </Router>
-    </Provider>
-);
-
-
+const router = ( <Provider store={store}>
+    <Router history={browserHistory}>
+        <Route path='/' component={App}>
+            <IndexRoute component={Login}/>
+            <Route path='/register' component={Registration}/>
+        </Route>
+        <Route path="*" component={() => ( <div>NoMatch</div> )}/>
+    </Router>
+</Provider> );
 
 ReactDOM.render( router, document.getElementById( 'root' ) );
 registerServiceWorker();
