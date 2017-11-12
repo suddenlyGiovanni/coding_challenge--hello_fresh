@@ -36,20 +36,30 @@ UserSchema.methods.comparePassword = comparePassword;
 // BEFORE SAVING THE USER - HASH THE PASSWORD WITH bcrypt
 UserSchema.pre( 'save', function saveHook( next ) {
     const user = this;
+    console.log('model - user.js - UserSchema.pre("save") - user: ', user);
+
 
     // proceed further only if the password is modified or the user is new
     if ( !user.isModified( 'password' ) ) {
+        // console.log('model - user.js - UserSchema.pre("save") - !user.isModified( "password" ): ', user.password);
+
         return next();
     }
 
-    return bcrypt.genSalt()
-        .then( salt => bcrypt.hash( user.password, salt ) )
-        .then( hash => {
+    return bcrypt.genSalt( ( saltError, salt ) => {
+
+        if ( saltError ) { return next( saltError ); }
+
+        return bcrypt.hash( user.password, salt, ( hashError, hash ) => {
+            if ( hashError ) { return next( hashError );}
+
             // replace a password string with hash value
             user.password = hash;
+            // console.log('model - user.js - UserSchema.pre("save") - bcrypt.hash: ', user.password);
+
             return next();
-        } )
-        .catch( err => console.error( err ) );
+        } );
+    } );
 } );
 
 module.exports = mongoose.model( 'User', UserSchema );

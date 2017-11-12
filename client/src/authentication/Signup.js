@@ -4,9 +4,9 @@ import React from 'react';
 // higher order component that wrap LOGIN && REGISTRATION
 import FormWrapper from './FormWrapper';
 
-const Registration = ( { handleInput, handleSubmit, error} ) => {
+const Signup = ( { handleInput, handleSubmit, error} ) => {
 
-    console.log( 'Registration - RENDER' );
+    console.log( 'Signup - RENDER' );
 
     return (
         <div>
@@ -109,4 +109,4 @@ const Registration = ( { handleInput, handleSubmit, error} ) => {
     );
 };
 
-export default FormWrapper( Registration, '/auth/register' );
+export default FormWrapper( Signup, '/auth/signup' );

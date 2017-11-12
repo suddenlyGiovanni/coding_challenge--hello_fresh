@@ -5,10 +5,10 @@ const express = require( 'express' ),
     passport = require('passport'),
     compression = require( 'compression' ),
     favicon = require( 'serve-favicon' ),
-    config = require('../config/secrets.json');
+    secrets = require('../config/secrets.json');
 
 // CONNECT TO THE DATABASE AND LOAD MODELS
-require('./models').connect(config.dbUri);
+require('./models/index').connect(secrets.dbUri);
 
 // EXPRESS
 const app = express();

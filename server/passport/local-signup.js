@@ -20,12 +20,16 @@ module.exports = new PassportLocalStrategy( localStrategyConfig, ( req, email, p
         bday: req.body.bday,
     };
 
+    console.log('local-signup - PassportLocalStrategy - req.boody: ', req.body);
+
     // CREATE A NEW USER DOCUMENT WITH USERDATA
     const newUser = new User( userData );
 
     newUser.save( err => {
-        return ( err )
-            ? done( err )
-            : done( null );
+        if ( !err ) {
+            // console.log('local-signup - newUser.save - err ', err );
+            return done( null );
+        }
+        return done( err );
     } );
 } );

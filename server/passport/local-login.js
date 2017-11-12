@@ -15,43 +15,43 @@ const localStrategyConfig = {
 module.exports = new PassportLocalStrategy( localStrategyConfig, ( req, email, password, done ) => {
     const userData = {
         email: email.trim(),
-        password: password.trim()
+        password: password.trim(),
     };
 
-    // FIND A USER BY EMAIL ADD.
-    return User.findOne( { email: userData.email } )
+    // DB FIND A USER BY EMAIL
+    return User.findOne( {
+        email: userData.email
+    }, ( err, user ) => {
+        if ( err ) {
+            return done( err );
+        }
+        if ( !user ) {
+            const error = new Error( 'Incorrect email or password' );
+            error.name = 'IncorrectCredentialsError';
+            return done( error );
+        }
+        // CHECK FOR MATCHING HASHED PASSWORD IN DB
+        return user.comparePassword( userData.password, ( passwordErr, isMatch ) => {
+            if ( passwordErr ) {
+                return done( passwordErr );
+            }
 
-        .then( user => {
-
-            if ( !user ) {
+            if ( !isMatch ) {
                 const error = new Error( 'Incorrect email or password' );
                 error.name = 'IncorrectCredentialsError';
                 return done( error );
             }
+            const payload = {
+                sub: user._id
+            };
 
-            // CHECK FOR MATCHING HASHED PASSWORD IN DB
-            return user.comparePassword( userData.password, ( isMatch ) => {
+            // CREATE A TOKE STRING
+            const token = jwt.sign( payload, secrets.jwtSecret );
+            const data = {
+                name: user.name
+            };
 
-                if ( !isMatch ) {
-                    const error = new Error( 'Incorrect email or password' );
-                    error.name = 'IncorrectCredentialsError';
-                    return done( error );
-                }
-
-                const payload = {
-                    sub: user._id
-                };
-
-                // CREATE A TOKE STRING
-                const token = jwt.sign( payload, secrets.jwtSecret );
-                const data = {
-                    name: user.name
-                };
-
-                return done( null, token, data );
-            } ); // TODO: catch comparePassword error here?
-
-        } )
-
-        .catch( err => done( err ) );
+            return done( null, token, data );
+        } );
+    } );
 } );

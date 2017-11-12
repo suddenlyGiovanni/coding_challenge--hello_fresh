@@ -39,8 +39,8 @@ class Header extends Component {
 
 
                     <div className='btn-container'>
-                        <Link className='btn-link' to={this.props.pathname === '/' ? '/register' : '/'}>
-                            {this.props.pathname === '/' ? 'Register' : 'Login'}
+                        <Link className='btn-link' to={this.props.pathname === '/' ? '/signup' : '/'}>
+                            {this.props.pathname === '/' ? 'Signup' : 'Login'}
                         </Link>
                     </div>
 

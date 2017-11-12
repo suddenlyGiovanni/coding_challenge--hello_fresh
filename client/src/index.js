@@ -22,7 +22,7 @@ import App from './app/App';
 
 // COMPONENTS:
 import Login from './authentication/Login';
-import Registration from './authentication/Registration';
+import Signup from './authentication/Signup';
 
 export const store = createStore( reducers, composeWithDevTools( applyMiddleware( reduxPromise, logger ) ) );
 
@@ -30,7 +30,7 @@ const router = ( <Provider store={store}>
     <Router history={browserHistory}>
         <Route path='/' component={App}>
             <IndexRoute component={Login}/>
-            <Route path='/register' component={Registration}/>
+            <Route path='/signup' component={Signup}/>
         </Route>
         <Route path="*" component={() => ( <div>NoMatch</div> )}/>
     </Router>

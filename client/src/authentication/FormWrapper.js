@@ -21,8 +21,8 @@ const FormWrapper = ( Component, url ) => {
         handleSubmit( e ) {
             e.preventDefault();
             // dispatch a redux action to make POST request to this.url and handle response
-            console.log( 'fn: handleSubmit - this.state', this.state );
-            ( this.url === '/auth/register' )
+            console.log( 'fn: handleSubmit - this.url', this.url );
+            ( this.url === '/auth/signup' )
                 ? signUp( this.state )
                 : logIn( this.state );
         }

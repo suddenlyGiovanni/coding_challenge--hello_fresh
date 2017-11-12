@@ -6,14 +6,14 @@ export const signUp = signUpForm => {
     console.log( 'REDUX - ACTION - fn: signUpForm' );
 
     return axios
-        .post( '/auth/register', signUpForm )
+        .post( '/auth/signup', signUpForm )
         .then( resp => {
             console.log( 'REDUX - ACTION - fn: signUpForm - axios resp :', resp );
             // location.replace( '/recipes' );
 
             return { type: 'SUBMIT_FORM_DATA', user: resp.data, };
         } )
-        .catch( err => console.error( err.stack ) );
+        .catch( err => console.log( JSON.stringify(err.response.data, null, '\t') ));
 
 };
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -28,7 +28,7 @@ export const logIn = logInForm => {
             // location.replace( '/recipes' );
             return { type: 'SUBMIT_FORM_DATA', user: resp.data, };
         } )
-        .catch( err => console.error( err.stack ) );
+        .catch( err => console.log( JSON.stringify(err.response.data, null, '\t') ));
 };
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
