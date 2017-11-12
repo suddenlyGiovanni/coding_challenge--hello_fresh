@@ -3,7 +3,7 @@
 import React from 'react';
 // REDUX
 import { connect } from 'react-redux';
-import { signUp, logIn } from '../actions/actions';
+import { postSingupForm, postLoginForm } from '../actions/authentication';
 // Higher Order component
 const FormWrapper = ( Component, url ) => {
     class AuthForm extends React.Component {
@@ -23,8 +23,8 @@ const FormWrapper = ( Component, url ) => {
             // dispatch a redux action to make POST request to this.url and handle response
             console.log( 'fn: handleSubmit - this.url', this.url );
             ( this.url === '/auth/signup' )
-                ? signUp( this.state )
-                : logIn( this.state );
+                ? postSingupForm( this.state )
+                : postLoginForm( this.state );
         }
         render() {
             return ( <Component error={this.props.error} handleInput={( e ) => this.handleInput( e )} handleSubmit={( e ) => this.handleSubmit( e )}/> );
@@ -36,10 +36,12 @@ const FormWrapper = ( Component, url ) => {
         return { error: state.error };
     };
 
-    const mapDispatchToProps = dispatch => ( {
-        signUp: signUpForm  => dispatch( signUp( signUpForm ) ),
-        logIn: logInForm  => dispatch( logIn( logInForm ) )
-    } );
+    const mapDispatchToProps = ( dispatch ) => {
+        return {
+            postSingupForm: signupForm  => dispatch( postSingupForm( signupForm ) ),
+            postLoginForm: loginForm  => dispatch( postLoginForm( loginForm ) )
+        };
+    };
     return connect( mapStateToProps, mapDispatchToProps )( AuthForm );
 };
 export default FormWrapper;

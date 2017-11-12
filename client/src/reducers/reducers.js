@@ -7,7 +7,9 @@ export default ( state = {}, action ) => {
         state = { ...state, ...action.user };
         break;
 
-
+    case 'SUBMIT_ERROR':
+        state = { ...state, ...action.err };
+        break;
 
 
 
