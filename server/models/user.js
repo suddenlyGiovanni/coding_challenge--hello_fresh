@@ -5,11 +5,11 @@ const bcrypt = require( 'bcrypt' );
 const UserSchema = new mongoose.Schema( {
     firstName: {
         type: String,
-        unique: false
+        unique: false,
     },
     lastName: {
         type: String,
-        unique: false
+        unique: false,
     },
     bday: {
         type: Date
@@ -19,25 +19,23 @@ const UserSchema = new mongoose.Schema( {
         index: {
             unique: true
         },
-        lowercase: true
+        lowercase: true,
     },
-    password: String,
+    password: String
 } );
 // ATTACH A COMPAREPASSWORD METHOD TO USER SCHEMA.
 
 // Compare the passed password with the value in the database. A model method.
-const comparePassword = ( password, callback ) => {
+
+UserSchema.methods.comparePassword = function comparePassword( password, callback ) {
     // Load hash from password DB.
     bcrypt.compare( password, this.password, callback );
 };
 
-UserSchema.methods.comparePassword = comparePassword;
-
 // BEFORE SAVING THE USER - HASH THE PASSWORD WITH bcrypt
 UserSchema.pre( 'save', function saveHook( next ) {
     const user = this;
-    console.log('model - user.js - UserSchema.pre("save") - user: ', user);
-
+    console.log( 'model - user.js - UserSchema.pre("save") - user: ', user );
 
     // proceed further only if the password is modified or the user is new
     if ( !user.isModified( 'password' ) ) {
@@ -48,10 +46,14 @@ UserSchema.pre( 'save', function saveHook( next ) {
 
     return bcrypt.genSalt( ( saltError, salt ) => {
 
-        if ( saltError ) { return next( saltError ); }
+        if ( saltError ) {
+            return next( saltError );
+        }
 
         return bcrypt.hash( user.password, salt, ( hashError, hash ) => {
-            if ( hashError ) { return next( hashError );}
+            if ( hashError ) {
+                return next( hashError );
+            }
 
             // replace a password string with hash value
             user.password = hash;

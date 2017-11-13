@@ -23,24 +23,34 @@ module.exports = new PassportLocalStrategy( localStrategyConfig, ( req, email, p
         email: userData.email
     }, ( err, user ) => {
         if ( err ) {
+            // console.log('local-login User.findOne - err', err);
             return done( err );
         }
         if ( !user ) {
+            // console.log('local-login User.findOne - !user', user);
             const error = new Error( 'Incorrect email or password' );
             error.name = 'IncorrectCredentialsError';
             return done( error );
         }
         // CHECK FOR MATCHING HASHED PASSWORD IN DB
         return user.comparePassword( userData.password, ( passwordErr, isMatch ) => {
+
+            // console.log('local-login User.findOne - user.comparePassword', user);
+
             if ( passwordErr ) {
+                // console.log('local-login User.findOne - user.comparePassword - passErr', passwordErr);
                 return done( passwordErr );
             }
 
             if ( !isMatch ) {
+                console.log('local-login User.findOne - user.comparePassword - !isMatch');
                 const error = new Error( 'Incorrect email or password' );
                 error.name = 'IncorrectCredentialsError';
                 return done( error );
             }
+
+            console.log('local-login User.findOne - user.comparePassword - isMatch');
+
             const payload = {
                 sub: user._id
             };
