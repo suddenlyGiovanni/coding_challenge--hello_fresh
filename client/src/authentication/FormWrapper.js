@@ -1,8 +1,11 @@
-// higher order component that wrap LOGIN && REGISTRATION
+// HOC that wrap LOGIN && REGISTRATION
 // REACT
 import React from 'react';
+
 // REDUX
 import { connect } from 'react-redux';
+
+// ACTIONS
 import { postSignupForm, postLoginForm } from '../actions/authentication';
 
 

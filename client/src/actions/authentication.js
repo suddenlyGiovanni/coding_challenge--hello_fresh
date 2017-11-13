@@ -21,6 +21,8 @@ export function loginHasErrored( error ) {
 }
 
 export function userAuthSuccess( user ) {
+    // change the current URL to '/login'
+    browserHistory.push('/recipes');
     return { type: USER_AUTH_SUCCESS, user, };
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -63,8 +65,6 @@ export function postLoginForm( loginForm ) {
                 }
                 // save the token to the localStorage
                 Auth.authenticateUser(response.data.token);
-                // change the current URL to '/login'
-                browserHistory.push('/recipes');
                 return response.data.user;
             } )
             .then( authData => dispatch( userAuthSuccess( authData ) ) )
