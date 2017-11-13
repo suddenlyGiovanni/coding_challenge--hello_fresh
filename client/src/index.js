@@ -21,6 +21,7 @@ import Signup from './authentication/Signup';
 
 export const store = configureStore();
 
+
 const router = (
     <Provider store={store}>
         <Router history={browserHistory}>

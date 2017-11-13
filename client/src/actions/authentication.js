@@ -1,33 +1,37 @@
 import axios from '../utils/axios';
 
+export const SIGNUP_HAS_ERRORED = 'SIGNUP_HAS_ERRORED';
+export const LOGIN_HAS_ERRORED = 'LOGIN_HAS_ERRORED';
+export const USER_AUTH_SUCCESS = 'USER_AUTH_SUCCESS';
+
+
 // AUTH ACTION CREATORS:
 export function signupHasErrored( error ) {
     console.log( 'REDUX - ACTION - fn: signupHasErrored - error = ', error );
-    return { type: 'SIGNUP_HAS_ERRORED', singupError: error };
+    return { type: SIGNUP_HAS_ERRORED, singupError: error };
 }
 
 export function loginHasErrored( error ) {
     console.log( 'REDUX - ACTION - fn: loginHasErrored - error = ', error );
-    return { type: 'LOGIN_HAS_ERRORED', loginError: error };
+    return { type: LOGIN_HAS_ERRORED, loginError: error };
 }
 
 export function userAuthSuccess( user ) {
     console.log( 'REDUX - ACTION - fn: userAuthSuccess - data = ', user );
-    return { type: 'USER_AUTH_SUCCESS', user };
+    return { type: USER_AUTH_SUCCESS, user };
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// AXIOS / FETCH ACTION CREATORS
+// THUNK ACTION CREATORS:
 
-export function postSingupForm( signupForm ) {
-    console.log( 'REDUX - ACTION - fn: postSingupForm - signupForm = ', signupForm );
+export function postSignupForm( signupForm ) {
+    console.log( 'REDUX - ACTION - fn: postSignupForm - signupForm = ', signupForm );
     // BUG: not yet able to enter next code block!!!
-    return dispatch => {
-        console.log( 'REDUX - ACTION - fn: postSingupForm - inside dispatch' );
-        return axios
-            .post( '/auth/signup', signupForm )
+    return (dispatch) => {
+        console.log( 'REDUX - ACTION - fn: postSignupForm - inside dispatch' );
+        axios.post( '/auth/signup', signupForm )
             .then( response => {
-                console.log( 'REDUX - ACTION - fn: postSingupForm - inside axios.post response' );
+                console.log( 'REDUX - ACTION - fn: postSignupForm - inside axios.post response' );
 
                 if ( response.status !== 200 ) {
                     throw Error( response.data );
@@ -39,11 +43,11 @@ export function postSingupForm( signupForm ) {
     };
 }
 
-// export const postSingupForm = ( signupForm ) => dispatch => {
-//     console.log( 'REDUX - ACTION - fn: postSingupForm - inside dispatch' );
+// export const postSignupForm = ( signupForm ) => dispatch => {
+//     console.log( 'REDUX - ACTION - fn: postSignupForm - inside dispatch' );
 //     axios.post( '/auth/signup', signupForm )
 //         .then( response => {
-//             console.log( 'REDUX - ACTION - fn: postSingupForm - inside axios.post response' );
+//             console.log( 'REDUX - ACTION - fn: postSignupForm - inside axios.post response' );
 //
 //             if ( response.status !== 200 ) {
 //                 throw Error( response.data );
