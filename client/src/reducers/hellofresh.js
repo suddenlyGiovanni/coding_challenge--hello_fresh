@@ -1,21 +1,23 @@
 import { LOAD_NEW_RECIPES, LOAD_CUISINE_TYPES, } from '../actions/hellofresh';
 
-export function loadNewRecipes( state = {}, action ) {
-    switch ( action.type ) {
-        case LOAD_NEW_RECIPES:
-            return null;
-        default:
-            return state;
-
-    }
-}
-
-export function loadCuisineTypes( state = {}, action ) {
+export const cuisineTypes = ( state = [], action ) => {
     switch ( action.type ) {
         case LOAD_CUISINE_TYPES:
-            return null;
+            return action.cuisine;
         default:
             return state;
 
     }
-}
+};
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+export const recipes = ( state = [], action ) => {
+    switch ( action.type ) {
+        case LOAD_NEW_RECIPES:
+            return action.recipes;
+        default:
+            return state;
+
+    }
+};
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -1,12 +1,13 @@
 import { combineReducers } from 'redux';
 // IMPORT THE INDIVIDUAL REDUCERS:
-import { signupHasErrored, loginHasErrored, userAuthSuccess } from './authentication';
-import { loadNewRecipes, loadCuisineTypes, } from './hellofresh';
+import { signupHasErrored, loginHasErrored, } from './authentication';
+import { recipes, cuisineTypes, } from './hellofresh';
+import { user } from './user';
 
 export default combineReducers( {
+    user,
     signupHasErrored,
     loginHasErrored,
-    userAuthSuccess,
-    loadNewRecipes,
-    loadCuisineTypes,
+    recipes,
+    cuisineTypes
 } );

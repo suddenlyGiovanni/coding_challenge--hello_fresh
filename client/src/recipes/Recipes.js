@@ -25,7 +25,7 @@ class Recipes extends Component {
 
 /* REDUX */
 const mapStateToProps = state => {
-    return { recipes: state.recipes };
+    return { };
 };
 
 const mapDispatchToProps = dispatch => {

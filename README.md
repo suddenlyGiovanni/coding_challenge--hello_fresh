@@ -80,3 +80,79 @@ Bonus points
 - You implemented actual authentication with the use of passport or something similar.
 
 Good luck, and have fun!
+
+# Execution:
+
+### Tech Stack:
+| **Frontend** | **Backend** | **Database** |
+| ------ | ------ | ------ |
+**[React.js]** | **[Node.js]** |  **MongoDB**
+**[Redux.js]** | **[Express.js]** |
+
+
+## Installation
+```bash
+$ git clone -b development https://github.com/hellofreshdevtests/suddenlyGiovanni-frontend-test.git
+$ cd suddenlyGiovanni-frontend-test
+$ npm install
+$ cd client
+$ npm install
+$ cd ../server
+$ mkdir config
+$ cd config && touch secrets.json
+```
+
+##### Secret.json
+Paste in the following code and remember to configure [mongoDB] accordingly...
+```javascript
+{
+    "dbUri": "mongodb://localhost/hellofresh",
+    "hfClientSecret": "**inser_here_hello_fresh_api_client_secret***",
+    "jwtSecret": "abracadabra"
+}
+```
+## Features:
+- [x] The app must run.
+- [x] Your app is lean and mean (small files that make the page look good).
+- [x] You implemented a proper grid.
+- [x] Your app is responsive.
+- [x] Your app is well structured.
+- [ ] You implemented the rating functionality without using a third-party library.
+
+Bonus points
+
+- [ ] You wrote unit tests for your JavaScript.
+- [x] Your application is an SPA.
+- [x] You wrote server side code instead of using a utility application like `http-server`.
+- [x] You implement actual endpoints to request the recipe data.
+- [x] You use our own API instead of the JSON file, read how to do that [here](./USE_THE_API.md).
+- [ ] Your app is deployed to Github Pages or some other hosting.
+- [x] Your application is isomporphic/universal.
+- [x] You implemented actual authentication with the use of passport or something similar.
+
+
+## Contact
+* e-mail: ravalico.giovanni@gmail.com
+* Twitter: [@superspacezova](https://twitter.com/superspacezova "twitterhandle on twitter")
+* LinkdeIn: [/giovanni-ravalico]
+
+License
+----
+MIT © [suddenlyGiovanni]
+**Free Software, Hell Yeah!**
+
+
+
+[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
+
+[//]: # (Contact references:)
+   [Spiced Academy]: <https://www.spiced-academy.com/>
+   [suddenlyGiovanni]: <https://github.com/suddenlyGiovanni/>
+   [/giovanni-ravalico]: <https://www.linkedin.com/in/giovanni-ravalico/>
+   [@superspacezova]: <https://twitter.com/superspacezova>
+
+[//]: # (Tech Stack references:)
+   [React.js]: <https://reactjs.org/docs/installation.html>
+   [Node.js]: <https://nodejs.org/dist/latest-v8.x/docs/api/>
+   [Redux.js]: <http://redux.js.org/>
+   [Express.js]: <http://expressjs.com/en/4x/api.html>

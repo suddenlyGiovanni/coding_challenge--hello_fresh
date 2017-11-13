@@ -1,36 +1,30 @@
 import axios from '../utils/axios';
 import Auth from '../utils/Auth';
-import { browserHistory } from 'react-router'
+import { browserHistory } from 'react-router';
 
 export const SIGNUP_HAS_ERRORED = 'SIGNUP_HAS_ERRORED';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const LOGIN_HAS_ERRORED = 'LOGIN_HAS_ERRORED';
-export const USER_AUTH_SUCCESS = 'USER_AUTH_SUCCESS';
+export const LOAD_USER = 'LOAD_USER';
 
 // AUTH ACTION CREATORS:
-export function signupHasErrored( error ) {
-    return { type: SIGNUP_HAS_ERRORED, signupError: error, };
-}
+export const signupHasErrored = error => ( { type: SIGNUP_HAS_ERRORED, signupError: error, } );
 
-export function signupSuccess( message ) {
-    return { type: SIGNUP_SUCCESS, signupSucces: message, };
-}
+export const signupSuccess = message => ( { type: SIGNUP_SUCCESS, signupSucces: message, } );
 
-export function loginHasErrored( error ) {
-    return { type: LOGIN_HAS_ERRORED, loginError: error, };
-}
+export const loginHasErrored = error => ( { type: LOGIN_HAS_ERRORED, loginError: error, } );
 
-export function userAuthSuccess( user ) {
+export const loadUser = user => {
     // change the current URL to '/login'
-    browserHistory.push('/recipes');
-    return { type: USER_AUTH_SUCCESS, user, };
-}
+    browserHistory.push( '/recipes' );
+    return { type: LOAD_USER, user };
+};
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // THUNK ACTION CREATORS:
 
-export function postSignupForm( signupForm ) {
-    return  dispatch  => {
+export const postSignupForm = signupForm => {
+    return dispatch => {
         axios
             .post( '/auth/signup', signupForm )
             .then( response => {
@@ -41,17 +35,18 @@ export function postSignupForm( signupForm ) {
                 }
                 if ( response.data.success ) {
                     // change the current URL to '/login'
-                    browserHistory.push('/login');
+                    browserHistory.push( '/login' );
                 }
-                console.log(response);
+                console.log( response );
                 return response.data.message;
             } )
             .then( signupSuccesMess => dispatch( signupSuccess( signupSuccesMess ) ) )
             .catch( err => dispatch( signupHasErrored( err.response.data ) ) );
     };
-}
+};
 
-export function postLoginForm( loginForm ) {
+
+export const postLoginForm = loginForm => {
     console.log( 'REDUX - ACTION - fn: postLoginForm - loginForm ', loginForm );
 
     return dispatch => {
@@ -64,12 +59,12 @@ export function postLoginForm( loginForm ) {
                     throw Error( response );
                 }
                 // save the token to the localStorage
-                Auth.authenticateUser(response.data.token);
+                Auth.authenticateUser( response.data.token );
                 return response.data.user;
             } )
-            .then( authData => dispatch( userAuthSuccess( authData ) ) )
+            .then( user => dispatch( loadUser( user ) ) )
             .catch( err => dispatch( loginHasErrored( err.response.data ) ) );
     };
-}
+};
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
