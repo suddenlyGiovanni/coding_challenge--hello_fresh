@@ -4,6 +4,9 @@ import React from 'react';
 // REDUX
 import { connect } from 'react-redux';
 import { postSignupForm, postLoginForm } from '../actions/authentication';
+
+
+
 // Higher Order component
 const FormWrapper = ( Component, url ) => {
     class AuthForm extends React.Component {
@@ -21,19 +24,29 @@ const FormWrapper = ( Component, url ) => {
         handleSubmit( e ) {
             e.preventDefault();
             // dispatch a redux action to make POST request to this.url and handle response
-            console.log( 'fn: handleSubmit - this.url', this.url );
+            // console.log( 'fn: handleSubmit - this.url', this.url );
             ( this.url === '/auth/signup' )
                 ? this.props.postSignupForm( this.state )
                 : this.props.postLoginForm( this.state );
         }
         render() {
-            return ( <Component error={this.props.error} handleInput={( e ) => this.handleInput( e )} handleSubmit={( e ) => this.handleSubmit( e )}/> );
+
+            return (
+                <Component
+                    signupError={this.props.signupError}
+                    loginError={this.props.loginError}
+                    handleInput={( e ) => this.handleInput( e )}
+                    handleSubmit={( e ) => this.handleSubmit( e )}/>
+            );
         }
     }
 
     /* REDUX */
     const mapStateToProps = state => {
-        return { error: state.error };
+        return {
+            signupError: state.signupError,
+            loginError: state.loginError
+        };
     };
 
     const mapDispatchToProps = dispatch => {

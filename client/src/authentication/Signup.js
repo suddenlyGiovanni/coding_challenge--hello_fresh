@@ -4,9 +4,7 @@ import React from 'react';
 // higher order component that wrap LOGIN && REGISTRATION
 import FormWrapper from './FormWrapper';
 
-const Signup = ( { handleInput, handleSubmit, error} ) => {
-
-    console.log( 'Signup - RENDER' );
+const Signup = ( { handleInput, handleSubmit, signupError} ) => {
 
     return (
         <div>
@@ -26,7 +24,7 @@ const Signup = ( { handleInput, handleSubmit, error} ) => {
                     <form onSubmit={handleSubmit}>
                         <div className='row'>
                             <h2 className='col-xs-12'>Register</h2>
-                            {error && <div>Something went wrong. Please try again!</div>}
+                            {signupError && <div>Something went wrong. Please try again!</div>}
                             <label
                                 htmlFor='firstName'
                                 className='col-xs-12'>First Name</label>

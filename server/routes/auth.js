@@ -73,7 +73,7 @@ const validateLoginForm = payload => {
 
 
 
-// REGISTER
+// SIGNUP
 router.post( '/signup', ( req, res, next ) => {
     console.log( 'API: ', 'method: POST ', '/auth/signup - payload: ', req.body );
     const validationResult = validateRegisterForm( req.body );

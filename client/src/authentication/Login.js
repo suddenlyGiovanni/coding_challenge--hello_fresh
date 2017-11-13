@@ -4,11 +4,10 @@ import React from 'react';
 // higher order component that wrap LOGIN && REGISTRATION
 import FormWrapper from './FormWrapper';
 
+const Login = ( props ) => {
 
-const Login = ( { handleInput, handleSubmit, error } ) => {
-
-    console.log( 'Login - RENDER' );
-
+    // console.log( 'Login - RENDER - props: ', props );
+    const { handleInput, handleSubmit, postLoginForm } = props;
     return (
         <div>
             <div className='row'>
@@ -27,7 +26,7 @@ const Login = ( { handleInput, handleSubmit, error } ) => {
                     <form onSubmit={handleSubmit}>
                         <div className='row'>
                             <h2 className='col-xs-12'>Log In</h2>
-                            {error && <div>Something went wrong. Please try again!</div>}
+                            {postLoginForm && <div>Something went wrong. Please try again!</div>}
 
                             <label
                                 htmlFor='email'

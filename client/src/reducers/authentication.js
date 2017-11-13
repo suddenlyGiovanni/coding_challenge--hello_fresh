@@ -6,7 +6,7 @@ import {
 export function signupHasErrored( state = false, action ) {
     switch ( action.type ) {
         case SIGNUP_HAS_ERRORED:
-            return action.singupError;
+            return action.signupError;
         default:
             return state;
     }
