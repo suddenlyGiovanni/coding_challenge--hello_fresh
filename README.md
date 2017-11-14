@@ -92,7 +92,7 @@ Good luck, and have fun!
 **Redux-Thunk** |
 
 ### New Technologies  
-I used this coding challenge to learn and implement new concepts and technologies:
+I used this coding challenge as an opportunity to learn and implement new concepts and technologies:
 - MongoDB
 - Mongoose
 - Passport.js
