@@ -2,7 +2,7 @@
 import React from 'react';
 
 // higher order component that wrap LOGIN && REGISTRATION
-import FormWrapper from './FormWrapper';
+import FormWrapper from './form-wrapper';
 
 const Login = ( props ) => {
 

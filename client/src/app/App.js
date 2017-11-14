@@ -1,10 +1,10 @@
 // REACT
 import React, { Component } from 'react';
 import Auth from '../utils/Auth';
-// import './App.css';
+// import './app.css';
 import '../styles/grid-layout.css';
 
-import Header from '../header/Header'
+import Header from '../header/header'
 
 
 export default class App extends Component {

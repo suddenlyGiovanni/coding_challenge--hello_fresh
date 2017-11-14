@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import './Header.css';
+import './header.css';
 
 const Header  = props => {
     // console.log( 'Header - props: ', props );

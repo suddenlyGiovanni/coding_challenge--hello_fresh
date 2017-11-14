@@ -2,12 +2,12 @@
 import Auth from './utils/Auth';
 
 // CONTAINERS:
-import App from './app/App';
+import App from './app/app';
 
 // COMPONENTS:
-import Login from './authentication/Login';
-import Signup from './authentication/Signup';
-import Recipes from './recipes/Recipes';
+import Login from './authentication/login';
+import Signup from './authentication/signup';
+import RecipesListContainer from './recipes/recipes-list-container';
 
 
 const routes = {
@@ -19,7 +19,7 @@ const routes = {
             path: '/',
             getComponent: (location, callback) => {
                 if (Auth.isUserAuthenticated()) {
-                    callback(null, Recipes);
+                    callback(null, RecipesListContainer);
                 } else {
                     callback(null, Login);
                 }
