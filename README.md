@@ -87,8 +87,16 @@ Good luck, and have fun!
 | **Frontend** | **Backend** | **Database** |
 | ------ | ------ | ------ |
 **[React.js]** | **[Node.js]** |  **MongoDB**
-**[Redux.js]** | **[Express.js]** |
+**[Redux.js]** | **[Express.js]** | **Mongoose**
+**Passport.js** |
+**Redux-Thunk** |
 
+### New Technologies  
+I used this coding challenge to learn and implement new concepts and technologies:
+- MongoDB
+- Mongoose
+- Passport.js
+- Redux-Thunk
 
 ## Installation
 ```bash
@@ -135,6 +143,7 @@ Bonus points
 * e-mail: ravalico.giovanni@gmail.com
 * Twitter: [@superspacezova](https://twitter.com/superspacezova "twitterhandle on twitter")
 * LinkdeIn: [/giovanni-ravalico]
+* Facebook: [/RavalicoGiovanni](https://www.facebook.com/RavalicoGiovanni)
 
 License
 ----
@@ -154,5 +163,11 @@ MIT © [suddenlyGiovanni]
 [//]: # (Tech Stack references:)
    [React.js]: <https://reactjs.org/docs/installation.html>
    [Node.js]: <https://nodejs.org/dist/latest-v8.x/docs/api/>
+   [PostgreSQL]: <https://www.postgresql.org/docs/10/static/index.html>
    [Redux.js]: <http://redux.js.org/>
    [Express.js]: <http://expressjs.com/en/4x/api.html>
+   [AWS S3]: <https://aws.amazon.com/documentation/s3/>
+   [Socket.io - client]: <https://socket.io/docs/server-api/>
+   [Socket.io - server]: <https://socket.io/docs/server-api/>
+   [PeerJs - WebRTC]: <http://peerjs.com/docs/#api>
+   [Material-UI]: <http://www.material-ui.com/#/>

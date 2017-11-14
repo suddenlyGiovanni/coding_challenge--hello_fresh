@@ -16,7 +16,7 @@ export const loginHasErrored = error => ( { type: LOGIN_HAS_ERRORED, loginError:
 
 export const loadUser = user => {
     // change the current URL to '/login'
-    browserHistory.push( '/recipes' );
+    browserHistory.push( '/' );
     return { type: LOAD_USER, user };
 };
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

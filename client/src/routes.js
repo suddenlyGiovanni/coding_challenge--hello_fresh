@@ -16,7 +16,7 @@ const routes = {
     childRoutes: [
 
         {
-            path: '/recipes',
+            path: '/',
             getComponent: (location, callback) => {
                 if (Auth.isUserAuthenticated()) {
                     callback(null, Recipes);
