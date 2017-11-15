@@ -48,9 +48,9 @@ export const postRecipeRating = ( recipeId, rating ) => {
         };
 
         axios
-            .post( '/api/recipe', {recipeId,rating}, config )
+            .post( '/api/recipe/rating', {recipeId,rating}, config )
             .then( resp => {
-                console.log( resp );
+                console.log( resp.data );
                 dispatch(saveRecipeRating(resp.data));
             } )
             .catch( err => console.log( err.response ) );

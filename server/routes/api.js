@@ -19,7 +19,7 @@ router.get( '/recipes', ( req, res ) => {
 // _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 // SAVE A SPECIFIC RECIPE RATING
-router.post( '/recipe', ( req, res ) => {
+router.post( '/recipe/rating', ( req, res ) => {
     const recipeId = req.body.recipeId;
     const rating = req.body.rating;
     console.log( 'API: ', 'method: POST ', '/api/recipe', recipeId, rating );
