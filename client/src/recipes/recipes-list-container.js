@@ -11,14 +11,9 @@ import RecipesSearch from './recipes-search';
 import RecipeCard from './recipe-card';
 
 class Recipes extends Component {
-    constructor( props ) {
-        super( props );
-    }
 
     componentDidMount() {
-        this
-            .props
-            .fetchHelloFreshData();
+        this.props.fetchHelloFreshData();
     }
 
     render() {
@@ -29,6 +24,7 @@ class Recipes extends Component {
                 id,
                 name,
                 headline,
+                slug,
                 averageRating,
                 prepTime,
                 link,
@@ -38,7 +34,7 @@ class Recipes extends Component {
             const calories = nutrition.filter( el => el.name === 'Calories' )[0].amount;
             const time = prepTime.match( /\d+/ );
 
-            return <RecipeCard key={index} id={id} name={name} headline={headline} averageRating={averageRating} time={time} apiLink={link} imageLink={imageLink} calories={calories}/>;
+            return <RecipeCard key={index} id={id} name={name} headline={headline} alt={slug} averageRating={averageRating} time={time} apiLink={link} imageLink={imageLink} calories={calories}/>;
 
         } );
 
@@ -57,7 +53,10 @@ class Recipes extends Component {
 
 /* REDUX */
 const mapStateToProps = state => {
-    return { recipes: state.recipes, cuisineTypes: state.cuisineTypes, };
+    return {
+        recipes: state.recipes,
+        cuisineTypes: state.cuisineTypes,
+    };
 };
 
 const mapDispatchToProps = dispatch => {

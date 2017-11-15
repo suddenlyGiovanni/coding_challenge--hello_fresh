@@ -7,7 +7,10 @@ const RecipesSearch = props => {
         'height': '80px'
     }
     return (
-        <div style={style}>RecipesSearch</div>
+        <div style={style}>
+            <p>RecipesSearch</p>
+            <input/>
+        </div>
     );
 };
 
