@@ -16,10 +16,10 @@ export default class Rating extends Component {
             rating: rating,
             temp_rating: rating
         } );
+        this.props.submitRating(rating);
     }
 
     star_over( rating ) {
-        // this.state.temp_rating = this.state.rating;
         let starOverRating = rating;
 
         let savedRating = this.state.rating;
@@ -81,3 +81,5 @@ export default class Rating extends Component {
         );
     }
 }
+
+// ★ => Unicode Code Point = U+2605

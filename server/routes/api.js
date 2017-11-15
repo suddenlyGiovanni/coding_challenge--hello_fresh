@@ -1,8 +1,6 @@
 // ROUTE: --> /api/
 const router = require( 'express' ).Router();
-const { queryRecipes, queryCuisines } = require( '../controllers/hello-fresh-api' );
-
-
+const { queryRecipes, queryCuisines, } = require( '../controllers/hello-fresh-api' );
 
 // ROOT OF THE API _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 router.get( '/', ( req, res ) => {
@@ -10,9 +8,6 @@ router.get( '/', ( req, res ) => {
     res.json( { message: 'api route working fine' } );
 } );
 // _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-
-
-
 
 // READ RECIPES
 router.get( '/recipes', ( req, res ) => {
@@ -23,7 +18,14 @@ router.get( '/recipes', ( req, res ) => {
 } );
 // _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
-
+// SAVE A SPECIFIC RECIPE RATING
+router.post( '/recipe', ( req, res ) => {
+    const recipeId = req.body.recipeId;
+    const rating = req.body.rating;
+    console.log( 'API: ', 'method: POST ', '/api/recipe', recipeId, rating );
+    res.json( { recipeId, rating, } );
+} );
+// _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 // READ CUISINES
 router.get( '/cuisines', ( req, res ) => {
@@ -33,8 +35,6 @@ router.get( '/cuisines', ( req, res ) => {
         .catch( err => console.error( err ) );
 } );
 // _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-
-
 
 /* MODULE EXPORTS */
 module.exports = router;

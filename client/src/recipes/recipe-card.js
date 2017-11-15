@@ -4,16 +4,24 @@ import React, { Component } from 'react'
 // REDUX
 import { connect } from 'react-redux';
 // ACTIONS
-// import {} from '../actions/hellofresh';
+import { postRecipeRating } from '../actions/hellofresh';
 
 // COMPONENT
-// import StarRatingDisplay from '../star-rating/star-rating-display';
-// import StarRating from '../star-rating/star-rating';
-import Rating from '../rating-favourite/rating';
+import Rating from '../rating-favorite/rating';
 
 import './recipe-card.css';
 
 class RecipeCard extends Component {
+    constructor(props){
+        super(props);
+    }
+
+    submitRating(rating){
+        // CALL AN ACTION TO SAVE DATA TO DB
+        // console.log(`RecipeCard - submitRating(${rating}) - id(${this.props.id})`);
+        this.props.saveRating(this.props.id, rating);
+    }
+
     render() {
         const {
             key,
@@ -28,8 +36,8 @@ class RecipeCard extends Component {
             calories
         } = this.props;
 
-        const bkImg = {'backgroundImage' : `url(${imageLink})`};
-
+        // const bkImg = {'backgroundImage' : `url(${imageLink})`};
+        // console.log(this.props);
         return (
             <div className='card'>
                 {/* IMAGE */}
@@ -55,7 +63,7 @@ class RecipeCard extends Component {
 
                 {/* USER RATING AND FAV */}
                 <div className='card__action-bar'>
-                    <Rating />
+                    <Rating submitRating={rating => this.submitRating(rating)}/>
                 </div>
 
                 {/* <h1>name: {name}</h1>
@@ -76,8 +84,10 @@ class RecipeCard extends Component {
 }
 
 /* REDUX */
-const mapDispatchToProps = dispatch => {
-    return {};
+const mapDispatchToProps = ( dispatch ) => {
+    return {
+        saveRating: (recipeId, rating) => dispatch(postRecipeRating(recipeId, rating))
+    };
 };
 
-export default connect( mapDispatchToProps )( RecipeCard );
+export default connect( null, mapDispatchToProps )( RecipeCard );

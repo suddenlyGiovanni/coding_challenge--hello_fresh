@@ -7,7 +7,7 @@ import logger from 'redux-logger';
 import rootReducer from '../reducers';
 // IMPORT REDUX DEVTOOLS
 import { composeWithDevTools } from 'redux-devtools-extension';
-const middlewares = [ thunk, reduxPromise, logger, ];
+const middlewares = [ thunk, reduxPromise, logger  ];
 
 export default function configureStore( initialState ) {
     return createStore( rootReducer, initialState, composeWithDevTools( applyMiddleware( ...middlewares ) ) );
