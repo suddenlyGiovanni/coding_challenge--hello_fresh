@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { fetchHelloFreshData } from '../actions/hellofresh';
 
 // STYLES
+import '../styles/grid-layout.css';
 import './recipes-list-container.css';
 
 // COMPONENTS:

@@ -1,8 +1,9 @@
 .recipes-list-container {
     display: grid;
+    grid-gap              : 20px;
+    grid-template-columns : repeat(12, 1fr);
+    grid-template-rows: 90px auto;
 }
 
 .recipes-search-container {
-    margin-bottom: 10px;
-    background-color: gold;
 }

@@ -1,11 +1,9 @@
-* {
-  border : thin red dotted;
-}
+/* EXTRA SMALL | max-width: 768px */
 
 .card {
   display          : block;
-  width            : 344px;
-  min-height       : 304px;
+  max-width        : 600px;
+  max-height       : 450px;
   margin           : 8px;
   overflow         : hidden;
   border-radius    : 2px;
@@ -19,14 +17,47 @@
   height : 100%;
 }
 
+.card__content {
+    display: block;
+    padding: 0 15px;
+    min-height: 140px;
+    max-height: 140px;
+}
 
+/* SMALL | min-width: 768px | max-width: 992px */
 
-.card__extra {
-    display: flex;
-    flex-direction: row;
+@media
+(min-width : 768px) {
+    .card {
+        min-width: 275px;
+        min-height: 280px;
+        max-width: 350px;
+        /*max-height: 310px;*/
+    }
+}
+
+/* MEDIUM | min-width: 992px | max-width: 1200px */
+
+@media
+(min-width : 992px) {
+    .card {
+        /**/
+    }
+}
+
+/* LARGE | min-width: 1200px */
+
+@media
+  (min-width : 1200px) {
 }
 
 
+
+/*.card__extra {
+  display        : flex;
+  flex-direction : row;
+}*/
+
 .avg-rating {
-    height: auto;
+  height : auto;
 }
