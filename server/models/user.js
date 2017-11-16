@@ -2,6 +2,12 @@ const mongoose = require( 'mongoose' );
 const bcrypt = require( 'bcrypt' );
 
 // USER MODEL SCHEMA
+const Recipes = new mongoose.Schema({
+    recipeId: String,
+    rating: Number,
+    favourite: Boolean
+});
+
 const UserSchema = new mongoose.Schema( {
     firstName: {
         type: String,
@@ -22,7 +28,7 @@ const UserSchema = new mongoose.Schema( {
         lowercase: true,
     },
     password: String,
-    recipes: []
+    recipes: [Recipes]
 } );
 // ATTACH A COMPAREPASSWORD METHOD TO USER SCHEMA.
 
@@ -36,8 +42,7 @@ UserSchema.methods.comparePassword = function comparePassword( password, callbac
 // BEFORE SAVING THE USER - HASH THE PASSWORD WITH bcrypt
 UserSchema.pre( 'save', function saveHook( next ) {
     const user = this;
-    console.log( `model - user.js - UserSchema.pre("save")
-    user: ${user} \n`);
+    console.log( '\n model - user.js - UserSchema.pre("save") - user: \n', JSON.stringify(user, null, '\t'));
 
     // proceed further only if the password is modified or the user is new
     if ( !user.isModified( 'password' ) ) {
