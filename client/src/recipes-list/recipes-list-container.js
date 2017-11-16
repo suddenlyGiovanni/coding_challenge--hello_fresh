@@ -6,9 +6,12 @@ import { connect } from 'react-redux';
 // ACTIONS
 import { fetchHelloFreshData } from '../actions/hellofresh';
 
+// STYLES
+import './recipes-list-container.css';
+
 // COMPONENTS:
-import RecipesSearch from './recipes-search';
-import RecipeCard from './recipe-card';
+import RecipesSearch from '../recipes-search/recipes-search';
+import RecipeCard from '../recipes-card/recipe-card';
 
 class Recipes extends Component {
 
@@ -72,8 +75,8 @@ class Recipes extends Component {
         }
 
         return (
-            <div>
-                <RecipesSearch/>
+            <div className='recipes-list-container'>
+                <RecipesSearch className='recipes-search-container'/>
                 {recipesList}
             </div>
         );

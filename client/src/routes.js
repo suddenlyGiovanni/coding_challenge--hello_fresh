@@ -7,7 +7,7 @@ import App from './app/app';
 // COMPONENTS:
 import Login from './authentication/login';
 import Signup from './authentication/signup';
-import RecipesListContainer from './recipes/recipes-list-container';
+import RecipesListContainer from './recipes-list/recipes-list-container';
 
 
 const routes = {

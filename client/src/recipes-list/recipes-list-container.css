@@ -1,0 +1,8 @@
+.recipes-list-container {
+    display: grid;
+}
+
+.recipes-search-container {
+    margin-bottom: 10px;
+    background-color: gold;
+}
