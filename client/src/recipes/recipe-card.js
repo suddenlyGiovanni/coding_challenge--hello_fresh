@@ -33,7 +33,8 @@ class RecipeCard extends Component {
             time,
             apiLink,
             imageLink,
-            calories
+            calories,
+            rating
         } = this.props;
 
         // const bkImg = {'backgroundImage' : `url(${imageLink})`};
@@ -63,7 +64,9 @@ class RecipeCard extends Component {
 
                 {/* USER RATING AND FAV */}
                 <div className='card__action-bar'>
-                    <Rating submitRating={rating => this.submitRating(rating)}/>
+                    <Rating
+                        rating={rating}
+                        submitRating={rating => this.submitRating(rating)}/>
                 </div>
 
                 {/* <h1>name: {name}</h1>

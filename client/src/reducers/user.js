@@ -13,8 +13,8 @@ export const user = ( state = {}, action ) => {
         }
 
         case SAVE_RECIPE_RATING: {
-            const updatedUser = { ...state.user, ...action.recipeRating };
-            state = Object.assign( {}, state, { recipes: updatedUser });
+            const updatedUser = { ...state.user, ...action.user };
+            state = Object.assign( {}, state, updatedUser);
             break;
         }
 

@@ -60,7 +60,8 @@ module.exports = new PassportLocalStrategy( localStrategyConfig, ( req, email, p
             const data = {
                 firstName: user.firstName,
                 lastName: user.lastName,
-                uid: user._id
+                uid: user._id,
+                recipes: user.recipes || null
             };
 
             return done( null, token, data );

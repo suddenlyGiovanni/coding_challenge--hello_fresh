@@ -11,7 +11,7 @@ export const loadNewRecipes = recipes => ( { type: LOAD_NEW_RECIPES, recipes } )
 
 export const loadCuisineTypes = cuisine => ( { type: LOAD_CUISINE_TYPES, cuisine } );
 
-export const saveRecipeRating = recipeRating => ( { type: SAVE_RECIPE_RATING, recipeRating } );
+export const saveRecipeRating = user => ( { type: SAVE_RECIPE_RATING, user } );
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

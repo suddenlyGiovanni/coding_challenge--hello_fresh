@@ -17,7 +17,7 @@ class Recipes extends Component {
     }
 
     render() {
-        const { recipes } = this.props;
+        const { recipes, user } = this.props;
 
         const recipesList = recipes && recipes.map( ( recipe, index ) => {
             const {
@@ -31,10 +31,32 @@ class Recipes extends Component {
                 imageLink,
                 nutrition
             } = recipe;
+
             const calories = nutrition.filter( el => el.name === 'Calories' )[0].amount;
             const time = prepTime.match( /\d+/ );
+            let rating = null;
+            if (this.props.user.recipes) {
+                const matchingRating = user.recipes.find(recipe => recipe.recipeId === id);
+                if (matchingRating) {
+                    rating = matchingRating.rating;
+                }
+            }
 
-            return <RecipeCard key={index} id={id} name={name} headline={headline} alt={slug} averageRating={averageRating} time={time} apiLink={link} imageLink={imageLink} calories={calories} user={this.props.user}/>;
+            return (
+                <RecipeCard
+                    key={index}
+                    id={id}
+                    name={name}
+                    headline={headline}
+                    alt={slug}
+                    averageRating={averageRating}
+                    time={time}
+                    apiLink={link}
+                    imageLink={imageLink}
+                    calories={calories}
+                    user={user}
+                    rating={rating}
+                />);
 
         } );
 
