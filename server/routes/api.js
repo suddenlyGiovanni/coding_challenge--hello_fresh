@@ -30,44 +30,6 @@ router.post( '/recipe/rating', ( req, res ) => {
         uid: ${uid},
         recipeId: ${recipeId},
         rating: ${rating} \n` );
-    // PRO MEMORIA
-
-    // User.findById(uid, (err, user)=>{
-    //     if(err) throw err;
-    //     console.log('\nlog the user: ', user);
-    //     console.log('\nlog the recipes: ', user.recipes);
-    //     if (!user.recipes) {
-    //         console.log('inside empty recipes');
-    //         user.recipes = {};
-    //         user.recipes[recipeId] = {recipeId, rating};
-    //         user.markModified(user.recipes[recipeId]);
-    //         return user.save(err => {
-    //             if (err) throw err;
-    //             const { _id, firstName, lastName, recipes } = user;
-    //             res.json({ uid: _id, firstName, lastName, recipes });
-    //         });
-    //     }
-    //     if (user.recipes && user.recipes[recipeId]) {
-    //         console.log('\n inside user.recipes && user.recipes[recipeId]');
-    //         user.recipes[recipeId].rating = rating;
-    //         user.markModified(user.recipes[recipeId]);
-    //         return user.save(err => {
-    //             if (err) throw err;
-    //             const { _id, firstName, lastName, recipes } = user;
-    //             res.json({ uid: _id, firstName, lastName, recipes });
-    //         });
-    //     } else {
-    //         console.log('\n inside user.recipes');
-    //         user.recipes[recipeId] = {recipeId, rating};
-    //         user.markModified(user.recipes[recipeId]);
-    //         return user.save(err => {
-    //             if (err) throw err;
-    //             const { _id, firstName, lastName, recipes } = user;
-    //             res.json({ uid: _id, firstName, lastName, recipes });
-    //         });
-    //     }
-    // });
-
     // WORKING SOLUTION
     User.findById( uid )
         .then( user => {
@@ -84,7 +46,7 @@ router.post( '/recipe/rating', ( req, res ) => {
                 } else if ( idx > -1 ) {
                     // recipe already there - need to update
                     console.log('\n recipe already there', user.recipes[idx]);
-                    user.recipes[idx] = {...user.recipes[idx], recipeId, rating };
+                    user.recipes[idx].rating = rating;
                     return user;
                 }
             }
@@ -98,39 +60,118 @@ router.post( '/recipe/rating', ( req, res ) => {
             });
         })
         .catch( err => console.log( err ) );
-
-    // TRY TO USER recipeId AS KEY OF OBJ
-
-    // User.findById(uid)
-    //     .then( user => {
-    //         if (!user.recipes) {
-    //             user.recipes = {};
-    //         }
-    //         if (!user.recipes[recipeId]) {
-    //             user.recipes[recipeId] = { recipeId, rating };
-    //             user.save(err => {
-    //                 if (err) throw err;
-    //                 const { _id, firstName, lastName, recipes } = user;
-    //                 res.json({ uid: _id, firstName, lastName, recipes });
-    //             });
-    //         } else {
-    //             user.recipes[recipeId].rating = rating;
-    //             user.save(err => {
-    //                 if (err) throw err;
-    //                 const { _id, firstName, lastName, recipes } = user;
-    //                 res.json({ uid: _id, firstName, lastName, recipes });
-    //             });
-    //         }
-    //         // user.save(err => {
-    //         //     if (err) throw err;
-    //         //     const { _id, firstName, lastName, recipes } = user;
-    //         //     res.json({ uid: _id, firstName, lastName, recipes });
-    //         // });
-    //     })
-    //     .catch(err => console.log(err));
-
 } );
 // _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+// PRO MEMORIA
+
+// User.findById(uid, (err, user)=>{
+//     if(err) throw err;
+//     console.log('\nlog the user: ', user);
+//     console.log('\nlog the recipes: ', user.recipes);
+//     if (!user.recipes) {
+//         console.log('inside empty recipes');
+//         user.recipes = {};
+//         user.recipes[recipeId] = {recipeId, rating};
+//         user.markModified(user.recipes[recipeId]);
+//         return user.save(err => {
+//             if (err) throw err;
+//             const { _id, firstName, lastName, recipes } = user;
+//             res.json({ uid: _id, firstName, lastName, recipes });
+//         });
+//     }
+//     if (user.recipes && user.recipes[recipeId]) {
+//         console.log('\n inside user.recipes && user.recipes[recipeId]');
+//         user.recipes[recipeId].rating = rating;
+//         user.markModified(user.recipes[recipeId]);
+//         return user.save(err => {
+//             if (err) throw err;
+//             const { _id, firstName, lastName, recipes } = user;
+//             res.json({ uid: _id, firstName, lastName, recipes });
+//         });
+//     } else {
+//         console.log('\n inside user.recipes');
+//         user.recipes[recipeId] = {recipeId, rating};
+//         user.markModified(user.recipes[recipeId]);
+//         return user.save(err => {
+//             if (err) throw err;
+//             const { _id, firstName, lastName, recipes } = user;
+//             res.json({ uid: _id, firstName, lastName, recipes });
+//         });
+//     }
+// });
+
+// TRY TO USER recipeId AS KEY OF OBJ
+
+// User.findById(uid)
+//     .then( user => {
+//         if (!user.recipes) {
+//             user.recipes = {};
+//         }
+//         if (!user.recipes[recipeId]) {
+//             user.recipes[recipeId] = { recipeId, rating };
+//             user.save(err => {
+//                 if (err) throw err;
+//                 const { _id, firstName, lastName, recipes } = user;
+//                 res.json({ uid: _id, firstName, lastName, recipes });
+//             });
+//         } else {
+//             user.recipes[recipeId].rating = rating;
+//             user.save(err => {
+//                 if (err) throw err;
+//                 const { _id, firstName, lastName, recipes } = user;
+//                 res.json({ uid: _id, firstName, lastName, recipes });
+//             });
+//         }
+//         // user.save(err => {
+//         //     if (err) throw err;
+//         //     const { _id, firstName, lastName, recipes } = user;
+//         //     res.json({ uid: _id, firstName, lastName, recipes });
+//         // });
+//     })
+//     .catch(err => console.log(err));
+
+
+
+router.post( '/recipe/favorite', ( req, res ) => {
+    const recipeId = req.body.recipeId;
+    const favorite = req.body.favorite;
+    const uid = getUidFromToken(req);
+
+    console.log( `\nAPI:  method: POST /api/recipe
+        uid: ${uid},
+        recipeId: ${recipeId},
+        favorite: ${favorite} \n` );
+
+    User.findById( uid )
+        .then( user => {
+            if (user.recipes.length === 0) {
+                console.log('\n recipes arr is empty or undefined');
+                user.recipes.push({recipeId, favorite});
+
+            } else {
+                const idx = user.recipes.findIndex(el => el.recipeId === recipeId);
+                if (idx === -1) {
+                    console.log('\n no matching recipe found');
+                    user.recipes.push({recipeId, favorite});
+
+                } else {
+                    // recipe already there - need to update
+                    console.log('\n recipe already there, fav: ', favorite,  user.recipes[idx]);
+                    user.recipes[idx].favorite = favorite;
+                }
+            }
+            return user;
+        } )
+        .then(user => {
+            return user.save(err => {
+                if (err) throw err;
+                const { _id, firstName, lastName, recipes } = user;
+                res.json({ uid: _id, firstName, lastName, recipes });
+            });
+        })
+        .catch( err => console.log( err ) );
+});
+
 
 // READ CUISINES
 router.get( '/cuisines', ( req, res ) => {

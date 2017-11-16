@@ -34,13 +34,19 @@ class Recipes extends Component {
 
             const calories = nutrition.filter( el => el.name === 'Calories' )[0].amount;
             const time = prepTime.match( /\d+/ );
+
             let rating = null;
+            let favorite = null;
+
             if (this.props.user.recipes) {
-                const matchingRating = user.recipes.find(recipe => recipe.recipeId === id);
-                if (matchingRating) {
-                    rating = matchingRating.rating;
+                const matchingRecipe = user.recipes.find(recipe => recipe.recipeId === id);
+                if (matchingRecipe) {
+                    rating = matchingRecipe.rating;
+                    favorite = matchingRecipe.favorite;
                 }
             }
+
+
 
             return (
                 <RecipeCard
@@ -56,6 +62,7 @@ class Recipes extends Component {
                     calories={calories}
                     user={user}
                     rating={rating}
+                    favorite={favorite}
                 />);
 
         } );

@@ -1,0 +1,34 @@
+.heart {
+  display             : inline-block;
+  position            : relative;
+  top                 : 50%;
+  bottom              : 17px;
+  left                : 90%;
+  width               : 100px;
+  height              : 100px;
+  background          : url(https://cssanimation.rocks/images/posts/steps/heart.png) no-repeat;
+  background-position : 0 0;
+  animation           : fave-heart 1s steps(28);
+  transform           : translate(-50%, -50%);
+  cursor              : pointer;
+}
+
+.heart:hover {
+  background-position : -2800px 0;
+  /*transition          : background 1s steps(28);*/
+}
+
+@keyframes fave-heart {
+  0% {
+    background-position : 0 0;
+  }
+
+  100% {
+    background-position : -2800px 0;
+  }
+}
+
+.heart.heart-sel {
+  background-position : -2800px 0;
+  transition          : background 1s steps(28);
+}

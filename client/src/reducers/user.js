@@ -1,5 +1,5 @@
 import { LOAD_USER } from '../actions/authentication';
-import { SAVE_RECIPE_RATING } from '../actions/hellofresh';
+import { SAVE_RECIPE_RATING_FAVORITE } from '../actions/hellofresh';
 
 export const user = ( state = {}, action ) => {
 
@@ -12,7 +12,7 @@ export const user = ( state = {}, action ) => {
             break;
         }
 
-        case SAVE_RECIPE_RATING: {
+        case SAVE_RECIPE_RATING_FAVORITE: {
             const updatedUser = { ...state.user, ...action.user };
             state = Object.assign( {}, state, updatedUser);
             break;

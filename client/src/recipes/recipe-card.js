@@ -4,10 +4,11 @@ import React, { Component } from 'react'
 // REDUX
 import { connect } from 'react-redux';
 // ACTIONS
-import { postRecipeRating } from '../actions/hellofresh';
+import { postRecipeRating, postRecipeFavorite } from '../actions/hellofresh';
 
 // COMPONENT
 import Rating from '../rating-favorite/rating';
+import Favorite from '../rating-favorite/favorite';
 
 import './recipe-card.css';
 
@@ -18,8 +19,15 @@ class RecipeCard extends Component {
 
     submitRating(rating){
         // CALL AN ACTION TO SAVE DATA TO DB
-        // console.log(`RecipeCard - submitRating(${rating}) - id(${this.props.id})`);
         this.props.saveRating( this.props.user.uid, this.props.id, rating);
+    }
+    submitFavorite(toggleFav){
+        console.log(toggleFav);
+        this.props.saveFavorite(
+            this.props.user.uid,
+            this.props.id,
+            toggleFav
+        );
     }
 
     render() {
@@ -34,7 +42,8 @@ class RecipeCard extends Component {
             apiLink,
             imageLink,
             calories,
-            rating
+            rating,
+            favorite
         } = this.props;
 
         // const bkImg = {'backgroundImage' : `url(${imageLink})`};
@@ -70,6 +79,9 @@ class RecipeCard extends Component {
                     <Rating
                         rating={rating}
                         submitRating={rating => this.submitRating(rating)}/>
+                    <Favorite
+                        favorite={favorite}
+                        submitFavorite={toggleFav => this.submitFavorite(toggleFav)} />
                 </div>
 
                 {/* <h1>name: {name}</h1>
@@ -90,9 +102,10 @@ class RecipeCard extends Component {
 }
 
 /* REDUX */
-const mapDispatchToProps = ( dispatch ) => {
+const mapDispatchToProps = dispatch => {
     return {
-        saveRating: (uid, recipeId, rating) => dispatch(postRecipeRating(uid, recipeId, rating))
+        saveRating: (uid, recipeId, rating) => dispatch(postRecipeRating(uid, recipeId, rating)),
+        saveFavorite: (uid, recipeId, favorite) => dispatch(postRecipeFavorite(uid, recipeId, favorite))
     };
 };
 

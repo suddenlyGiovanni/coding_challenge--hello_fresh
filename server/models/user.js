@@ -5,7 +5,7 @@ const bcrypt = require( 'bcrypt' );
 const Recipes = new mongoose.Schema({
     recipeId: String,
     rating: Number,
-    favourite: Boolean
+    favorite: Boolean
 });
 
 const UserSchema = new mongoose.Schema( {

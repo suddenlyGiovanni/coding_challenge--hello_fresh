@@ -3,15 +3,16 @@ import Auth from '../utils/Auth';
 
 export const LOAD_NEW_RECIPES = 'LOAD_NEW_RECIPES';
 export const LOAD_CUISINE_TYPES = 'LOAD_CUISINE_TYPES';
-export const SAVE_RECIPE_RATING = 'SAVE_RECIPE_RATING';
+export const SAVE_RECIPE_RATING_FAVORITE = 'SAVE_RECIPE_RATING_FAVORITE';
 
 // RECIPES ACTION CREATORS:
 
-export const loadNewRecipes = recipes => ( { type: LOAD_NEW_RECIPES, recipes } );
+export const loadNewRecipes = recipes => ( { type: LOAD_NEW_RECIPES, recipes, } );
 
-export const loadCuisineTypes = cuisine => ( { type: LOAD_CUISINE_TYPES, cuisine } );
+export const loadCuisineTypes = cuisine => ( { type: LOAD_CUISINE_TYPES, cuisine, } );
 
-export const saveRecipeRating = user => ( { type: SAVE_RECIPE_RATING, user } );
+export const saveRecipeRatingFavorite = user => ( { type: SAVE_RECIPE_RATING_FAVORITE, user, } );
+
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -48,10 +49,31 @@ export const postRecipeRating = ( uid, recipeId, rating ) => {
         };
 
         axios
-            .post( '/api/recipe/rating', {uid, recipeId,rating}, config )
+            .post( '/api/recipe/rating', {
+                uid,
+                recipeId,
+                rating,
+            }, config )
             .then( resp => {
                 console.log( resp.data );
-                dispatch(saveRecipeRating(resp.data));
+                dispatch( saveRecipeRatingFavorite( resp.data ) );
+            } )
+            .catch( err => console.log( err.response ) );
+    };
+};
+
+export const postRecipeFavorite = ( uid, recipeId, favorite ) => {
+    return dispatch => {
+        const config = {
+            headers: {
+                'Authorization': `bearer ${ Auth.getToken() }`
+            }
+        };
+
+        axios.post( '/api/recipe/favorite', { uid, recipeId, favorite, }, config )
+            .then( resp => {
+                console.log( resp.data );
+                dispatch( saveRecipeRatingFavorite( resp.data ) );
             } )
             .catch( err => console.log( err.response ) );
     };
