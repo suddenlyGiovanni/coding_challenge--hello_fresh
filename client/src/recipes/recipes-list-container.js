@@ -34,7 +34,7 @@ class Recipes extends Component {
             const calories = nutrition.filter( el => el.name === 'Calories' )[0].amount;
             const time = prepTime.match( /\d+/ );
 
-            return <RecipeCard key={index} id={id} name={name} headline={headline} alt={slug} averageRating={averageRating} time={time} apiLink={link} imageLink={imageLink} calories={calories}/>;
+            return <RecipeCard key={index} id={id} name={name} headline={headline} alt={slug} averageRating={averageRating} time={time} apiLink={link} imageLink={imageLink} calories={calories} user={this.props.user}/>;
 
         } );
 
@@ -54,6 +54,7 @@ class Recipes extends Component {
 /* REDUX */
 const mapStateToProps = state => {
     return {
+        user: state.user,
         recipes: state.recipes,
         cuisineTypes: state.cuisineTypes,
     };

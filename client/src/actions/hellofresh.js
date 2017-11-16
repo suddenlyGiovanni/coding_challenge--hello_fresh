@@ -39,7 +39,7 @@ export const fetchHelloFreshData = () => {
     };
 };
 
-export const postRecipeRating = ( recipeId, rating ) => {
+export const postRecipeRating = ( uid, recipeId, rating ) => {
     return dispatch => {
         const config = {
             headers: {
@@ -48,7 +48,7 @@ export const postRecipeRating = ( recipeId, rating ) => {
         };
 
         axios
-            .post( '/api/recipe/rating', {recipeId,rating}, config )
+            .post( '/api/recipe/rating', {uid, recipeId,rating}, config )
             .then( resp => {
                 console.log( resp.data );
                 dispatch(saveRecipeRating(resp.data));

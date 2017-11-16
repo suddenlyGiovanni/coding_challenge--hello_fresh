@@ -19,7 +19,7 @@ class RecipeCard extends Component {
     submitRating(rating){
         // CALL AN ACTION TO SAVE DATA TO DB
         // console.log(`RecipeCard - submitRating(${rating}) - id(${this.props.id})`);
-        this.props.saveRating(this.props.id, rating);
+        this.props.saveRating( this.props.user.uid, this.props.id, rating);
     }
 
     render() {
@@ -86,7 +86,7 @@ class RecipeCard extends Component {
 /* REDUX */
 const mapDispatchToProps = ( dispatch ) => {
     return {
-        saveRating: (recipeId, rating) => dispatch(postRecipeRating(recipeId, rating))
+        saveRating: (uid, recipeId, rating) => dispatch(postRecipeRating(uid, recipeId, rating))
     };
 };
 
