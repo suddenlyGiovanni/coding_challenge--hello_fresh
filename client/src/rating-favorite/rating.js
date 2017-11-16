@@ -76,7 +76,7 @@ export default class Rating extends Component {
 
         return (
             <div className='star-rating'>
-                {stars} <span>rating {this.state.rating}</span>
+                {stars}
             </div>
         );
     }

@@ -3,6 +3,7 @@
 const router = require( 'express' ).Router();
 const { queryRecipes, queryCuisines, } = require( '../controllers/hello-fresh-api' );
 const User = require( 'mongoose' ).model( 'User' );
+const getUidFromToken = require('../utils/getUidFromToke');
 
 // ROOT OF THE API _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 router.get( '/', ( req, res ) => {
@@ -24,11 +25,12 @@ router.get( '/recipes', ( req, res ) => {
 router.post( '/recipe/rating', ( req, res ) => {
     const recipeId = req.body.recipeId;
     const rating = req.body.rating;
-    const uid = req.body.uid;
+    const uid = getUidFromToken(req);
     console.log( `\nAPI:  method: POST /api/recipe
         uid: ${uid},
         recipeId: ${recipeId},
         rating: ${rating} \n` );
+    // PRO MEMORIA
 
     // User.findById(uid, (err, user)=>{
     //     if(err) throw err;

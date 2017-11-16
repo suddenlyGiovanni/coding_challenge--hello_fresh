@@ -50,13 +50,16 @@ class RecipeCard extends Component {
                 <div className='card__header'>
                     <h3>{name}</h3>
                     <p>{headline}</p>
+                    {/* <Rating
+                        className='avg__rating'
+                        rating={averageRating}
+                        disabled={true} /> */}
 
                     {/* NUTRIENTS */}
                     <div className='card__extra'>
                         <span>{calories} kcal</span>
                         <span>{time} minutes</span>
                         <span className='avg-rating'>rating {averageRating}/5</span>
-                        {/* <StarRatingDisplay avgRating={averageRating}/> */}
 
                     </div>
                 </div>
