@@ -4,7 +4,7 @@ import React from 'react';
 // higher order component that wrap LOGIN && REGISTRATION
 import FormWrapper from './form-wrapper';
 
-import './signup.css';
+import './authentication.css';
 
 const Signup = ( { handleInput, handleSubmit, signupError} ) => {
 
@@ -13,7 +13,7 @@ const Signup = ( { handleInput, handleSubmit, signupError} ) => {
             <div className='row'>
                 <div className='col-md-2'></div>
                 <div className='col-xs-12 col-md-8'>
-                    <p>Register with us today to receive regular updates from the HelloFresh farm. Inspiring recipe ideas, the newest food trends, and unique HelloFresh promotions are waiting for you.</p>
+                    <p className='lead'>Register with us today to receive regular updates from the HelloFresh farm. Inspiring recipe ideas, the newest food trends, and unique HelloFresh promotions are waiting for you.</p>
                 </div>
                 <div className='col-md-2'></div>
             </div>
@@ -25,7 +25,7 @@ const Signup = ( { handleInput, handleSubmit, signupError} ) => {
 
                     <form onSubmit={handleSubmit}>
                         <div className='row'>
-                            <h2 className='col-xs-12'>Register</h2>
+                            <h4 className='col-xs-12'>Register</h4>
                             {signupError && <div>Something went wrong. Please try again!</div>}
                             <label
                                 htmlFor='firstName'
@@ -94,9 +94,14 @@ const Signup = ( { handleInput, handleSubmit, signupError} ) => {
                                 pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}'
                                 onChange={handleInput} />
 
-                            <input
+                            {/* <input
                                 className='col-xs-12'
-                                type='submit' value='Register'/>
+                                type='submit' value='Register'/> */}
+
+                            <button className='col-xs-12 btn'
+                                type='submit'>
+                                Register
+                            </button>
                         </div>
 
                     </form>

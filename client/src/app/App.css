@@ -1,3 +1,8 @@
 .app-container {
   margin-top : 80px;
 }
+
+.footer {
+    width: 100%;
+    min-height: 50px;
+}

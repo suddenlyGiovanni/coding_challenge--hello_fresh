@@ -4,9 +4,9 @@ import React from 'react';
 // higher order component that wrap LOGIN && REGISTRATION
 import FormWrapper from './form-wrapper';
 
-import './login.css';
+import './authentication.css';
 
-const Login = ( props ) => {
+const Login = props => {
 
     // console.log( 'Login - RENDER - props: ', props );
     const { handleInput, handleSubmit, postLoginForm } = props;
@@ -15,7 +15,7 @@ const Login = ( props ) => {
             <div className='row'>
                 <div className='col-md-2'></div>
                 <div className='col-xs-12 col-md-8'>
-                    <p>Register with us today to receive regular updates from the HelloFresh farm. Inspiring recipe ideas, the newest food trends, and unique HelloFresh promotions are waiting for you.</p>
+                    <p className='lead'>Register with us today to receive regular updates from the HelloFresh farm. Inspiring recipe ideas, the newest food trends, and unique HelloFresh promotions are waiting for you.</p>
                 </div>
                 <div className='col-md-2'></div>
             </div>
@@ -27,14 +27,14 @@ const Login = ( props ) => {
 
                     <form onSubmit={handleSubmit}>
                         <div className='row'>
-                            <h2 className='col-xs-12'>Log In</h2>
+                            <h4 className='col-xs-12'>Log In</h4>
                             {postLoginForm && <div>Something went wrong. Please try again!</div>}
 
                             <label
                                 htmlFor='email'
                                 className='col-xs-12'>Email</label>
                             <input
-                                className='col-xs-12'
+                                className='col-xs-12 form-control'
                                 id='email'
                                 type='email'
                                 name='email'
@@ -49,7 +49,7 @@ const Login = ( props ) => {
                                 htmlFor='password'
                                 className='col-xs-12'>Password</label>
                             <input
-                                className='col-xs-12'
+                                className='col-xs-12 form-control'
                                 id='password'
                                 type='password'
                                 name='password'
@@ -57,9 +57,14 @@ const Login = ( props ) => {
                                 required
                                 onChange={handleInput} />
 
-                            <input
+                            {/* <input
                                 className='col-xs-12'
-                                type='submit' value='Login'/>
+                                type='submit' value='Login'/> */}
+
+                            <button className='col-xs-12 btn'
+                                type='submit'>
+                                Login
+                            </button>
 
                         </div>
 
