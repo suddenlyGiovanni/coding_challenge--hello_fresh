@@ -21,11 +21,6 @@ const app = express();
 if ( process.env.NODE_ENV === 'production' ) {
     app.use( express.static( '../client/build' ) );
 }
-// _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-
-
-// FAVICON
-// app.use( favicon( path.join( __dirname, '../client/public', 'favicon.ico' ) ) );
 
 // _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
