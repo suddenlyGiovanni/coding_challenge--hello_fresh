@@ -26,7 +26,8 @@ if ( process.env.NODE_ENV === 'production' ) {
 
 
 // FAVICON
-app.use( favicon( path.join( __dirname, '../client/public', 'favicon.ico' ) ) );
+// app.use( favicon( path.join( __dirname, '../client/public', 'favicon.ico' ) ) );
+
 // _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 
@@ -78,11 +79,6 @@ app.use( function ( err, req, res, next ) {
 
 
 // ROUTING _____________________________________________________________________
-
-/* SERVE THE STATIC FILES - APP */
-app.get( '/', ( req, res ) => res.sendFile(
-    path.join( __dirname, '../client/public' )
-) );
 /* SERVE THE AUTHENTICATION ROUTES */
 app.use( '/auth', require( './routes/auth' ) );
 /* SERVE THE API ROUTES */

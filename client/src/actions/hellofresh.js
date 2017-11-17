@@ -55,7 +55,7 @@ export const postRecipeRating = ( uid, recipeId, rating ) => {
                 rating,
             }, config )
             .then( resp => {
-                console.log( resp.data );
+                // console.log( resp.data );
                 dispatch( saveRecipeRatingFavorite( resp.data ) );
             } )
             .catch( err => console.log( err.response ) );
@@ -72,7 +72,7 @@ export const postRecipeFavorite = ( uid, recipeId, favorite ) => {
 
         axios.post( '/api/recipe/favorite', { uid, recipeId, favorite, }, config )
             .then( resp => {
-                console.log( resp.data );
+                // console.log( resp.data );
                 dispatch( saveRecipeRatingFavorite( resp.data ) );
             } )
             .catch( err => console.log( err.response ) );

@@ -1,122 +1,126 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
 /* EXTRA SMALL | max-width: 768px */
 
 .card {
-    display: block;
-    max-width: 600px;
-    /*margin: auto;*/
-    overflow: hidden;
-    border-radius: 2px;
-    background-color: #fafafa;
-    box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15);
+  display          : block;
+  max-width        : 600px;
+  overflow         : hidden;
+  border-radius    : 2px;
+  background-color : #fafafa;
+  box-shadow       : 0 27px 55px 0 rgba(0, 0, 0, 0.3),
+                     0 17px 17px 0 rgba(0, 0, 0, 0.15);
+  /* margin: auto; */
 }
 
 .card__image-wrapper {
-    overflow-y: hidden;
-    max-height: 230px;
+  max-height : 230px;
+  overflow-y : hidden;
 }
 
 .card__image {
-    width: 100%;
-    height: 100%;
+  width  : 100%;
+  height : 100%;
 }
 
 .card__content {
-    display: block;
-    padding: 0 15px;
-    min-height: 140px;
-    max-height: 140px;
-    font-family: 'Source Sans Pro', sans-serif;
+  display     : block;
+  min-height  : 140px;
+  max-height  : 140px;
+  padding     : 0 15px;
+  font-family : 'Source Sans Pro',
+                sans-serif;
 }
 
 .card__header-name {
-    margin-top: 0;
-    font-size: 18px;
-    font-weight: 600;
-    margin: 0px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 1.8em;
-    /*font-family: 'Source Sans Pro', sans-serif;*/
+  margin        : 0px;
+  margin-top    : 0;
+  overflow      : hidden;
+  text-overflow : ellipsis;
+  font-size     : 18px;
+  font-weight   : 600;
+  line-height   : 1.8em;
+  white-space   : nowrap;
+  /* font-family: 'Source Sans Pro', sans-serif; */
 }
 
 .card__header-headline {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 16px;
-    line-height: 1.7em;
-    margin-top: 0px;
-    margin-bottom: 14px;
-    min-height: 25px;
+  min-height    : 25px;
+  margin-top    : 0px;
+  margin-bottom : 14px;
+  overflow      : hidden;
+  text-overflow : ellipsis;
+  font-size     : 16px;
+  line-height   : 1.7em;
+  white-space   : nowrap;
 }
 
 .card__extra {
-    display: inline-block;
-    font-size: 14px;
-    line-height: 1.43;
-    color: #b0aba3;
-    font-weight: 300;
-    margin: 0px;
-    width: 100%;
+  display     : inline-block;
+  width       : 100%;
+  margin      : 0px;
+  color       : #b0aba3;
+  font-size   : 14px;
+  font-weight : 300;
+  line-height : 1.43;
 }
 
 .card__extra-span {
-    margin-right: 20px
+  margin-right : 20px;
 }
 
 .card__extra-span.avg-rating {
-    position: relative;
-    float: right;
-    margin-right: 0px;
+  position     : relative;
+  float        : right;
+  margin-right : 0px;
 }
 
 .card__action-bar {
-    margin-top: 5px;
-
+  margin-top : 5px;
 }
 
 /* SMALL | min-width: 768px | max-width: 992px */
 
-@media (min-width: 768px) {
-    .card {
-        min-width: 275px;
-        min-height: 280px;
-        max-width: 350px;
-        /*max-height: 310px;*/
-    }
+@media
+  (min-width : 768px) {
+  .card {
+    min-width  : 275px;
+    max-width  : 350px;
+    min-height : 280px;
+    /* max-height: 310px; */
+  }
 }
 
 /* MEDIUM | min-width: 992px | max-width: 1200px */
 
-@media (min-width: 992px) {
-    .card {
-        max-height: 350px;
-    }
-    .card__image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    .card__image-wrapper {
-        width: 100%;
-        max-height: 190px;
-    }
+@media
+  (min-width : 992px) {
+  .card {
+    max-height : 350px;
+  }
+
+  .card__image {
+    width      : 100%;
+    height     : 100%;
+    object-fit : cover;
+  }
+
+  .card__image-wrapper {
+    width      : 100%;
+    max-height : 190px;
+  }
 }
 
 /* LARGE | min-width: 1200px */
 
-@media (min-width: 1200px) {
-    .card__image-wrapper {
-        max-height: 195px;
-    }
+@media
+  (min-width : 1200px) {
+  .card__image-wrapper {
+    max-height : 195px;
+  }
 }
 
-/*.card__extra {
-  display        : flex;
-  flex-direction : row;
-}*/
 
 .avg-rating {
-    height: auto;
+  height : auto;
 }

@@ -7,14 +7,14 @@ const getUidFromToken = require('../utils/getUidFromToke');
 
 // ROOT OF THE API _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 router.get( '/', ( req, res ) => {
-    console.log( 'API: ', 'method: GET ', '/api/' );
+    // console.log( 'API: ', 'method: GET ', '/api/' );
     res.json( { message: 'api route working fine' } );
 } );
 // _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 // READ RECIPES
 router.get( '/recipes', ( req, res ) => {
-    console.log( 'API: ', 'method: GET ', '/api/recipes' );
+    // console.log( 'API: ', 'method: GET ', '/api/recipes' );
     queryRecipes()
         .then( recipes => res.json( recipes ) )
         .catch( err => console.error( err ) );
@@ -26,10 +26,10 @@ router.post( '/recipe/rating', ( req, res ) => {
     const recipeId = req.body.recipeId;
     const rating = req.body.rating;
     const uid = getUidFromToken(req);
-    console.log( `\nAPI:  method: POST /api/recipe
-        uid: ${uid},
-        recipeId: ${recipeId},
-        rating: ${rating} \n` );
+    // console.log( `\nAPI:  method: POST /api/recipe
+    //     uid: ${uid},
+    //     recipeId: ${recipeId},
+    //     rating: ${rating} \n` );
     // WORKING SOLUTION
     User.findById( uid )
         .then( user => {
@@ -137,26 +137,26 @@ router.post( '/recipe/favorite', ( req, res ) => {
     const favorite = req.body.favorite;
     const uid = getUidFromToken(req);
 
-    console.log( `\nAPI:  method: POST /api/recipe
-        uid: ${uid},
-        recipeId: ${recipeId},
-        favorite: ${favorite} \n` );
+    // console.log( `\nAPI:  method: POST /api/recipe
+    //     uid: ${uid},
+    //     recipeId: ${recipeId},
+    //     favorite: ${favorite} \n` );
 
     User.findById( uid )
         .then( user => {
             if (user.recipes.length === 0) {
-                console.log('\n recipes arr is empty or undefined');
+                // console.log('\n recipes arr is empty or undefined');
                 user.recipes.push({recipeId, favorite});
 
             } else {
                 const idx = user.recipes.findIndex(el => el.recipeId === recipeId);
                 if (idx === -1) {
-                    console.log('\n no matching recipe found');
+                    // console.log('\n no matching recipe found');
                     user.recipes.push({recipeId, favorite});
 
                 } else {
                     // recipe already there - need to update
-                    console.log('\n recipe already there, fav: ', favorite,  user.recipes[idx]);
+                    // console.log('\n recipe already there, fav: ', favorite,  user.recipes[idx]);
                     user.recipes[idx].favorite = favorite;
                 }
             }

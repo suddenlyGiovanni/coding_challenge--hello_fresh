@@ -45,13 +45,13 @@ module.exports = new PassportLocalStrategy( localStrategyConfig, ( req, email, p
             }
 
             if ( !isMatch ) {
-                console.log('local-login User.findOne - user.comparePassword - !isMatch');
+                // console.log('local-login User.findOne - user.comparePassword - !isMatch');
                 const error = new Error( 'Incorrect email or password' );
                 error.name = 'IncorrectCredentialsError';
                 return done( error );
             }
 
-            console.log('local-login User.findOne - user.comparePassword - isMatch');
+            // console.log('local-login User.findOne - user.comparePassword - isMatch');
 
             const payload = {
                 sub: user._id

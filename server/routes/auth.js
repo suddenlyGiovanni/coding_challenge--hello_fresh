@@ -75,7 +75,7 @@ const validateLoginForm = payload => {
 
 // SIGNUP
 router.post( '/signup', ( req, res, next ) => {
-    console.log( 'API: ', 'method: POST ', '/auth/signup - payload: ', req.body );
+    // console.log( 'API: ', 'method: POST ', '/auth/signup - payload: ', req.body );
     const validationResult = validateRegisterForm( req.body );
 
     if ( !validationResult.success ) {
@@ -118,7 +118,7 @@ router.post( '/signup', ( req, res, next ) => {
 
 // LOGIN
 router.post( '/login', ( req, res, next ) => {
-    console.log( 'API: ', 'method: POST ', '/auth/login - payload: ', req.body );
+    // console.log( 'API: ', 'method: POST ', '/auth/login - payload: ', req.body );
     const validationResult = validateLoginForm( req.body );
 
     if ( !validationResult.success ) {
