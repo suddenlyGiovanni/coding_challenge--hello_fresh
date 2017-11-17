@@ -4,6 +4,8 @@ import React from 'react';
 // higher order component that wrap LOGIN && REGISTRATION
 import FormWrapper from './form-wrapper';
 
+import './signup.css';
+
 const Signup = ( { handleInput, handleSubmit, signupError} ) => {
 
     return (
@@ -29,7 +31,7 @@ const Signup = ( { handleInput, handleSubmit, signupError} ) => {
                                 htmlFor='firstName'
                                 className='col-xs-12'>First Name</label>
                             <input
-                                className='col-xs-12'
+                                className='col-xs-12 form-control'
                                 id='firstName'
                                 type="text"
                                 name='firstName'
@@ -43,7 +45,7 @@ const Signup = ( { handleInput, handleSubmit, signupError} ) => {
                                 htmlFor='lastName'
                                 className='col-xs-12'>Last Name</label>
                             <input
-                                className='col-xs-12'
+                                className='col-xs-12 form-control'
                                 id='lastName'
                                 type="text"
                                 name='lastName'
@@ -57,7 +59,7 @@ const Signup = ( { handleInput, handleSubmit, signupError} ) => {
                                 htmlFor='email'
                                 className='col-xs-12'>Email</label>
                             <input
-                                className='col-xs-12'
+                                className='col-xs-12 form-control'
                                 id='email'
                                 type='email'
                                 name='email'
@@ -72,7 +74,7 @@ const Signup = ( { handleInput, handleSubmit, signupError} ) => {
                                 htmlFor='password'
                                 className='col-xs-12'>Password</label>
                             <input
-                                className='col-xs-12'
+                                className='col-xs-12 form-control'
                                 id='password'
                                 type='password'
                                 name='password'
@@ -85,7 +87,7 @@ const Signup = ( { handleInput, handleSubmit, signupError} ) => {
                                 className='col-xs-12'>Date of Birth</label>
 
                             <input
-                                className='col-xs-12'
+                                className='col-xs-12 form-control'
                                 type='date'
                                 id='bday'
                                 name='bday'

@@ -4,6 +4,8 @@ import React from 'react';
 // higher order component that wrap LOGIN && REGISTRATION
 import FormWrapper from './form-wrapper';
 
+import './login.css';
+
 const Login = ( props ) => {
 
     // console.log( 'Login - RENDER - props: ', props );

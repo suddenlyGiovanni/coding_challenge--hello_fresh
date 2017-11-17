@@ -47,7 +47,8 @@ class RecipeCard extends Component {
             favorite
         } = this.props;
 
-        // const bkImg = {'backgroundImage' : `url(${imageLink})`};
+        const imgUrl = `url(${imageLink})`;
+        const bkImg = {'backgroundImage': imgUrl};
         // console.log(this.props);
         return (
             <div className='card col-xs-12 col-sm-6 col-md-4 col-lg-4'>
@@ -60,20 +61,20 @@ class RecipeCard extends Component {
 
                     {/* TITLE AND HEADLINE */}
                     <div className='card__header'>
-                        <h3>{name}</h3>
-                        <p>{headline}</p>
+                        <h3 className='card__header-name'>{name}</h3>
+                        <p className='card__header-headline'>{headline}</p>
                         {/* <Rating
                             className='avg__rating'
                             rating={averageRating}
                             disabled={true} /> */}
+                    </div>
 
-                        {/* NUTRIENTS */}
-                        <div className='card__extra'>
-                            <span>{calories} kcal</span>
-                            <span>{time} minutes</span>
-                            <span className='avg-rating'>rating {averageRating}/5</span>
+                    {/* NUTRIENTS */}
+                    <div className='card__extra'>
+                        <span className='card__extra-span'>{calories} kcal</span>
+                        <span className='card__extra-span'>{time} minutes</span>
+                        <span className='card__extra-span avg-rating'>rating {averageRating}/5</span>
 
-                        </div>
                     </div>
 
 

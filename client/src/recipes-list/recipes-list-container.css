@@ -3,7 +3,29 @@
     grid-gap              : 20px;
     grid-template-columns : repeat(12, 1fr);
     grid-template-rows: 90px auto;
+    margin-right  : auto;
+    margin-left   : auto;
+    padding-right : 15px;
+    padding-left  : 15px;
 }
 
-.recipes-search-container {
+@media
+  (min-width : 768px) {
+  .recipes-list-container {
+    width : 750px;
+  }
+}
+
+@media
+  (min-width : 992px) {
+  .recipes-list-container {
+    width : 970px;
+  }
+}
+
+@media
+  (min-width : 1200px) {
+  .recipes-list-container {
+    width : 1170px;
+  }
 }
