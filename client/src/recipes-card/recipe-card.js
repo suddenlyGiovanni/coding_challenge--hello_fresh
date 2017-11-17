@@ -14,9 +14,6 @@ import './recipe-card.css';
 import '../styles/grid-layout.css';
 
 class RecipeCard extends Component {
-    constructor(props){
-        super(props);
-    }
 
     submitRating(rating){
         // CALL AN ACTION TO SAVE DATA TO DB
@@ -33,22 +30,17 @@ class RecipeCard extends Component {
 
     render() {
         const {
-            key,
-            id,
             name,
             headline,
             alt,
             averageRating,
             time,
-            apiLink,
             imageLink,
             calories,
             rating,
             favorite
         } = this.props;
 
-        const imgUrl = `url(${imageLink})`;
-        const bkImg = {'backgroundImage': imgUrl};
         // console.log(this.props);
         return (
             <div className='card col-xs-12 col-sm-6 col-md-4 col-lg-4'>
@@ -73,7 +65,7 @@ class RecipeCard extends Component {
                     <div className='card__extra'>
                         <span className='card__extra-span'>{calories} kcal</span>
                         <span className='card__extra-span'>{time} minutes</span>
-                        <span className='card__extra-span avg-rating'>rating {averageRating}/5</span>
+                        <span className='card__extra-span avg-rating'>avg rating: {averageRating}/5</span>
 
                     </div>
 

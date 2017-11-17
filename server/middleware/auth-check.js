@@ -1,7 +1,8 @@
 const jwt = require( 'jsonwebtoken' );
 const User = require( 'mongoose' ).model( 'User' );
-const secrets = require( '../../config/secrets.json' );
+// const secrets = require( '../../config/secrets.json' );
 
+const jwtSecret =  process.env.JWT_SECRET || require( '../../config/secrets.json' ).jwtSecret;
 // AUTHENTICAION CHECKER MIDDLEWARES
 
 module.exports = ( req, res, next ) => {
@@ -12,7 +13,7 @@ module.exports = ( req, res, next ) => {
     const token = req.headers.authorization.split( ' ' )[ 1 ];
 
     // decode the token using a secret key-phrase
-    return jwt.verify( token, secrets.jwtSecret, ( err, decode ) => {
+    return jwt.verify( token, jwtSecret, ( err, decode ) => {
         // the 401 code is for unauthorized status
         if ( err ) { return res.status( 401 ).end(); }
 

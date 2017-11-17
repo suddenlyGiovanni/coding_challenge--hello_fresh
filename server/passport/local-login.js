@@ -1,8 +1,10 @@
 const jwt = require( 'jsonwebtoken' );
 const User = require( 'mongoose' ).model( 'User' );
 const PassportLocalStrategy = require( 'passport-local' ).Strategy;
-const secrets = require( '../../config/secrets.json' );
+// const secrets = require( '../../config/secrets.json' );
 
+
+const jwtSecret = process.env.JWT_SECRET || require( '../../config/secrets.json' ).jwtSecret;
 // CONFIGURE PASSWORD LOCAL STRATEGY:
 const localStrategyConfig = {
     usernameField: 'email',
@@ -56,7 +58,7 @@ module.exports = new PassportLocalStrategy( localStrategyConfig, ( req, email, p
             };
 
             // CREATE A TOKE STRING
-            const token = jwt.sign( payload, secrets.jwtSecret );
+            const token = jwt.sign( payload, jwtSecret );
             const data = {
                 firstName: user.firstName,
                 lastName: user.lastName,

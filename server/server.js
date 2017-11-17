@@ -4,11 +4,13 @@ const express = require( 'express' ),
     bodyParser = require( 'body-parser' ),
     passport = require('passport'),
     compression = require( 'compression' ),
-    favicon = require( 'serve-favicon' ),
-    secrets = require('../config/secrets.json');
+    favicon = require( 'serve-favicon' );
 
+
+
+const mongoUri = process.env.MONGODB_URI || require('../config/secrets.json').dbUri;
 // CONNECT TO THE DATABASE AND LOAD MODELS
-require('./models/index').connect(secrets.dbUri);
+require('./models/index').connect(mongoUri);
 
 // EXPRESS
 const app = express();
