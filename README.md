@@ -119,13 +119,20 @@ Paste in the following code and remember to configure [mongoDB] accordingly...
     "jwtSecret": "abracadabra"
 }
 ```
+
+## How to Run it locally:
+```bash
+$ mongod
+$ git npm run development
+```
+
 ## Features:
 - [x] The app must run.
 - [x] Your app is lean and mean (small files that make the page look good).
 - [x] You implemented a proper grid.
 - [x] Your app is responsive.
 - [x] Your app is well structured.
-- [ ] You implemented the rating functionality without using a third-party library.
+- [x] You implemented the rating functionality without using a third-party library.
 
 Bonus points
 
@@ -134,7 +141,7 @@ Bonus points
 - [x] You wrote server side code instead of using a utility application like `http-server`.
 - [x] You implement actual endpoints to request the recipe data.
 - [x] You use our own API instead of the JSON file, read how to do that [here](./USE_THE_API.md).
-- [ ] Your app is deployed to Github Pages or some other hosting.
+- [x] Your app is deployed to Github Pages or some other hosting.
 - [x] Your application is isomporphic/universal.
 - [x] You implemented actual authentication with the use of passport or something similar.
 
