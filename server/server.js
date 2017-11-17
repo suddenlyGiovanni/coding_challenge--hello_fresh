@@ -3,10 +3,9 @@ const express = require( 'express' ),
     logger = require( 'morgan' ),
     bodyParser = require( 'body-parser' ),
     passport = require('passport'),
-    compression = require( 'compression' ),
-    favicon = require( 'serve-favicon' );
+    compression = require( 'compression' );
 
-
+const pathToIndex = process.env.NODE_ENV ? '../client/build' : '../client/public';
 
 const mongoUri = process.env.MONGODB_URI || require('../config/secrets.json').dbUri;
 // CONNECT TO THE DATABASE AND LOAD MODELS
@@ -87,7 +86,7 @@ app.use( '/api', require( './routes/api' ) );
 
 /* CHATCH ALL ROUTES */
 app.all( '*', ( req, res ) => {
-    res.sendFile( path.join( __dirname, '../client/public' ) );
+    res.sendFile( path.join( __dirname, pathToIndex ) );
 } );
 
 
