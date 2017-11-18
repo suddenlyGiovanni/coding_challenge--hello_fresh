@@ -19,7 +19,7 @@ const app = express();
 // set the public folder where client stuff lives
 // Express only serves static assets in production
 if ( process.env.NODE_ENV === 'production' ) {
-    app.use( express.static( '../client/build' ) );
+    app.use( express.static(path.join(__dirname, '../client/build' )) );
 }
 
 // _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
@@ -76,8 +76,8 @@ app.use( function ( err, req, res, next ) {
 /* SERVE THE STATIC FILES - APP */
 
 app.get( '/', ( req, res ) => {
-    // res.sendFile( path.join( __dirname, '../client/build' ));
-    res.json({'message': 'helloworld'});
+    res.sendFile( path.resolve( __dirname, '../client/build', 'index.html' ));
+    // res.json({'message': 'helloworld'});
 });
 
 /* SERVE THE AUTHENTICATION ROUTES */
