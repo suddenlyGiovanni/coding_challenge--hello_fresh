@@ -10,7 +10,7 @@ export const LOAD_USER = 'LOAD_USER';
 // AUTH ACTION CREATORS:
 export const signupHasErrored = error => ( { type: SIGNUP_HAS_ERRORED, signupError: error, } );
 
-export const signupSuccess = message => ( { type: SIGNUP_SUCCESS, signupSucces: message, } );
+export const signupSuccess = message => ( { type: SIGNUP_SUCCESS, signupSuccess: message, } );
 
 export const loginHasErrored = error => ( { type: LOGIN_HAS_ERRORED, loginError: error, } );
 

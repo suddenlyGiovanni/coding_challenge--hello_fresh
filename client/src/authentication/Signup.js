@@ -26,7 +26,12 @@ const Signup = ( { handleInput, handleSubmit, signupError} ) => {
                     <form onSubmit={handleSubmit}>
                         <div className='row'>
                             <h4 className='col-xs-12'>Register</h4>
-                            {signupError && <div>Something went wrong. Please try again!</div>}
+                            {
+                                signupError &&
+                                <p className='col-xs-12 lead text-danger'>
+                                    {signupError.message}
+                                </p>
+                            }
                             <label
                                 htmlFor='firstName'
                                 className='col-xs-12'>First Name</label>
@@ -69,6 +74,12 @@ const Signup = ( { handleInput, handleSubmit, signupError} ) => {
                                 autoComplete='email'
                                 required
                                 onChange={handleInput} />
+                            {
+                                signupError.errors &&
+                                <label
+                                    htmlFor='email'
+                                    className='col-xs-12 text-danger'>{signupError.errors.email}</label>
+                            }
 
                             <label
                                 htmlFor='password'

@@ -9,7 +9,12 @@ import './authentication.css';
 const Login = props => {
 
     // console.log( 'Login - RENDER - props: ', props );
-    const { handleInput, handleSubmit, postLoginForm } = props;
+    const {
+        handleInput,
+        handleSubmit,
+        signupSuccess,
+        loginError } = props;
+
     return (
         <div>
             <div className='row'>
@@ -17,6 +22,7 @@ const Login = props => {
                 <div className='col-xs-12 col-md-8'>
                     <p className='lead'>Register with us today to receive regular updates from the HelloFresh farm. Inspiring recipe ideas, the newest food trends, and unique HelloFresh promotions are waiting for you.</p>
                 </div>
+
                 <div className='col-md-2'></div>
             </div>
 
@@ -28,8 +34,18 @@ const Login = props => {
                     <form onSubmit={handleSubmit}>
                         <div className='row'>
                             <h4 className='col-xs-12'>Log In</h4>
-                            {postLoginForm && <div>Something went wrong. Please try again!</div>}
-
+                            {
+                                loginError &&
+                                <p className='col-xs-12 lead text-danger'>
+                                    <span>{loginError.message}</span>
+                                </p>
+                            }
+                            {
+                                signupSuccess &&
+                                <p className='col-xs-12 lead text-success'>
+                                    <span>{signupSuccess.message}</span>
+                                </p>
+                            }
                             <label
                                 htmlFor='email'
                                 className='col-xs-12'>Email</label>

@@ -37,6 +37,7 @@ const FormWrapper = ( Component, url ) => {
             return (
                 <Component
                     signupError={this.props.signupError}
+                    signupSuccess={this.props.signupSuccess}
                     loginError={this.props.loginError}
                     handleInput={( e ) => this.handleInput( e )}
                     handleSubmit={( e ) => this.handleSubmit( e )}/>
@@ -47,8 +48,9 @@ const FormWrapper = ( Component, url ) => {
     /* REDUX */
     const mapStateToProps = state => {
         return {
-            signupError: state.signupError,
-            loginError: state.loginError
+            signupError: state.signupHasErrored,
+            signupSuccess: state.signupSuccess,
+            loginError: state.loginHasErrored
         };
     };
 

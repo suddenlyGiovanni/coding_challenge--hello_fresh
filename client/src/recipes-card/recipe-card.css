@@ -14,7 +14,6 @@
 }
 
 .card__image-wrapper {
-  max-height : 230px;
   overflow-y : hidden;
 }
 
@@ -88,6 +87,10 @@
     max-width  : 350px;
     min-height : 280px;
     /* max-height: 310px; */
+  }
+  .card__image-wrapper {
+    max-height : 230px;
+    overflow-y : hidden;
   }
 }
 
