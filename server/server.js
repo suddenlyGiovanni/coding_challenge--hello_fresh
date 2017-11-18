@@ -75,9 +75,10 @@ app.use( function ( err, req, res, next ) {
 // ROUTING _____________________________________________________________________
 /* SERVE THE STATIC FILES - APP */
 
-app.get( '/', ( req, res ) => res.sendFile(
-    path.join( __dirname, '../client/build' )
-) );
+app.get( '/', ( req, res ) => {
+    // res.sendFile( path.join( __dirname, '../client/build' ));
+    res.json({'message': 'helloworld'});
+});
 
 /* SERVE THE AUTHENTICATION ROUTES */
 app.use( '/auth', require( './routes/auth' ) );
