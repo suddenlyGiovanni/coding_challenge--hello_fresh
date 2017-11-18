@@ -73,6 +73,12 @@ app.use( function ( err, req, res, next ) {
 
 
 // ROUTING _____________________________________________________________________
+/* SERVE THE STATIC FILES - APP */
+
+app.get( '/', ( req, res ) => res.sendFile(
+    path.join( __dirname, '../client/build' )
+) );
+
 /* SERVE THE AUTHENTICATION ROUTES */
 app.use( '/auth', require( './routes/auth' ) );
 /* SERVE THE API ROUTES */
