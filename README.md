@@ -81,7 +81,12 @@ Bonus points
 
 Good luck, and have fun!
 
-# Execution:
+
+---
+---
+
+## Execution:
+My app is deployed on [Heroku](https://hello-fresh.herokuapp.com/)
 
 ### Tech Stack:
 | **Frontend** | **Backend** | **Database** |
@@ -97,6 +102,24 @@ I used this coding challenge as an opportunity to learn and implement new concep
 - Mongoose
 - Passport.js
 - Redux-Thunk
+### Requirements:
+- [x] The app must run.
+- [x] Your app is lean and mean (small files that make the page look good).
+- [x] You implemented a proper grid.
+- [x] Your app is responsive.
+- [x] Your app is well structured.
+- [x] You implemented the rating functionality without using a third-party library.
+
+Bonus points
+
+- [ ] You wrote unit tests for your JavaScript.
+- [x] Your application is an SPA.
+- [x] You wrote server side code instead of using a utility application like `http-server`.
+- [x] You implement actual endpoints to request the recipe data.
+- [x] You use our own API instead of the JSON file, read how to do that [here](./USE_THE_API.md).
+- [x] Your app is deployed to Github Pages or some other hosting.
+- [x] Your application is isomporphic/universal.
+- [x] You implemented actual authentication with the use of passport or something similar.
 
 ## Installation
 ```bash
@@ -127,24 +150,18 @@ $ git npm run development
 ```
 
 ## Features:
-- [x] The app must run.
-- [x] Your app is lean and mean (small files that make the page look good).
-- [x] You implemented a proper grid.
-- [x] Your app is responsive.
-- [x] Your app is well structured.
-- [x] You implemented the rating functionality without using a third-party library.
-
-Bonus points
-
-- [ ] You wrote unit tests for your JavaScript.
-- [x] Your application is an SPA.
-- [x] You wrote server side code instead of using a utility application like `http-server`.
-- [x] You implement actual endpoints to request the recipe data.
-- [x] You use our own API instead of the JSON file, read how to do that [here](./USE_THE_API.md).
-- [x] Your app is deployed to Github Pages or some other hosting.
-- [x] Your application is isomporphic/universal.
-- [x] You implemented actual authentication with the use of passport or something similar.
-
+- as a user, i can signup
+![mobile-signup](/readme/01-mobile-signup.gif)
+- as a user, i can login
+![mobile-login](/readme/02-mobile-login.gif)
+- as a user, i can rate the recipes
+![mobile-navigation](/readme/03-mobile-navigation.gif)
+- as a user, i can favorite a recipe
+- as a user, i can resume using the app form where i left in the previous session
+![tablet-navigation](/readme/04-tablet-navigation.gif)
+- as a user, i can use the app on devices of different sizes an aspect-ratio
+![tablet-landscape](/readme/05-tablet-landscape-navigation.gif)
+- as a user, i can logout
 
 ## Contact
 * e-mail: ravalico.giovanni@gmail.com
