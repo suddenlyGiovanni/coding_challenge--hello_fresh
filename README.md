@@ -162,10 +162,15 @@ $ npm run development
 
 ## Features:
 As soon as I read all the requirements, I decided to tackle this project as a full stack proof of concept.
+
 Immediately started building a robust backend to support all the feature needed on the client side.
+
 I have split my codebase into two separate containers: client and server. This decision was informed by my desire to try to include create-react-app on a bespoken restful node/express server.
+
 By doing so, I achieve all the benefits that create-react-app provides while developing on the client side.
+
 I decided to use MongoDB as it allowed me by maintaining an identical data structure on both back and front end, to speed up the development.
+
 ```javascript
 {
     "_id" : ObjectId("5a0fa3c82b99c20fd60826ab"),
@@ -184,9 +189,13 @@ I decided to use MongoDB as it allowed me by maintaining an identical data struc
 }
 ```
 I have built the client as an SPA on React and managed its state through Redux and redux-thunk.
+
 I have set up my restful server so it could dynamically fetch data from HelloFresh API whenever a client requires it. The client has the option, by specifying different parameres to my restful API, to fetch different dataset to consume. (ex. types of cuisine etc..)
+
 I implemented a fully functional authentication system with Passport.js, JSON Web Tokens. I secured the client side and the API endpoints.
+
 I implemented a rating and favorite system that is persistent for the user across sessions.
+
 I have styled the app to resemble the HelloFresh looks and feel. I developed it as mobile-first by using a grid system that I have built on top of CSS grid.
 
 > as a user, i can signup
