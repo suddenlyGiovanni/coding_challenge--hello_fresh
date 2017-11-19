@@ -86,7 +86,7 @@ Good luck, and have fun!
 ---
 
 ## Execution:
-My app is deployed on [Heroku](https://hello-fresh.herokuapp.com/)
+My app is deployed on [hello-fresh.herokuapp](https://hello-fresh.herokuapp.com/)
 
 ### Tech Stack:
 | **Frontend** | **Backend** | **Database** |
@@ -102,6 +102,7 @@ I used this coding challenge as an opportunity to learn and implement new concep
 - Mongoose
 - Passport.js
 - Redux-Thunk
+
 ### Requirements:
 - [x] The app must run.
 - [x] Your app is lean and mean (small files that make the page look good).
@@ -122,6 +123,10 @@ Bonus points
 - [x] You implemented actual authentication with the use of passport or something similar.
 
 ## Installation
+to run the code locally follow these installation instructions:
+- install MongoDB;
+- install Node.js;
+
 ```bash
 $ git clone -b development https://github.com/hellofreshdevtests/suddenlyGiovanni-frontend-test.git
 $ cd suddenlyGiovanni-frontend-test
@@ -135,6 +140,7 @@ $ cd config && touch secrets.json
 
 ##### Secret.json
 Paste in the following code and remember to configure [mongoDB] accordingly...
+You should also edit 'hfClientSecret' property with the correct hello fresh api client secret...
 ```javascript
 {
     "dbUri": "mongodb://localhost/hellofresh",
@@ -144,24 +150,68 @@ Paste in the following code and remember to configure [mongoDB] accordingly...
 ```
 
 ## How to Run it locally:
+Start a mongo process:
 ```bash
 $ mongod
-$ git npm run development
+```
+Then in a new tab/terminal run:
+```bash
+$ npm run development
 ```
 
+
 ## Features:
-- as a user, i can signup
+As soon as I read all the requirements, I decided to tackle this project as a full stack proof of concept.
+Immediately started building a robust backend to support all the feature needed on the client side.
+I have split my codebase into two separate containers: client and server. This decision was informed by my desire to try to include create-react-app on a bespoken restful node/express server.
+By doing so, I achieve all the benefits that create-react-app provides while developing on the client side.
+I decided to use MongoDB as it allowed me by maintaining an identical data structure on both back and front end, to speed up the development.
+```javascript
+{
+    "_id" : ObjectId("5a0fa3c82b99c20fd60826ab"),
+    "email" : "bat@man.com",
+    "password" : "$2a$10$5XyItumO38Se0o0K2Ri3YOIi543kC9NaoFBRUQ7qYNoZjwFHmenyS",
+    "firstName" : "bat",
+    "lastName" : "man",
+    "recipes" : [
+        {
+            "recipeId" : "57acd49f544b1828478b4568",
+            "rating" : 3,
+            "_id" : ObjectId("5a0fa4c62b99c20fd60826ac"),
+            "favorite" : true
+        },
+    ],
+}
+```
+I have built the client as an SPA on React and managed its state through Redux and redux-thunk.
+I have set up my restful server so it could dynamically fetch data from HelloFresh API whenever a client requires it. The client has the option, by specifying different parameres to my restful API, to fetch different dataset to consume. (ex. types of cuisine etc..)
+I implemented a fully functional authentication system with Passport.js, JSON Web Tokens. I secured the client side and the API endpoints.
+I implemented a rating and favorite system that is persistent for the user across sessions.
+I have styled the app to resemble the HelloFresh looks and feel. I developed it as mobile-first by using a grid system that I have built on top of CSS grid.
+
+> as a user, i can signup
+
 ![mobile-signup](/readme/01-mobile-signup.gif)
-- as a user, i can login
+
+> as a user, i can login
+
 ![mobile-login](/readme/02-mobile-login.gif)
-- as a user, i can rate the recipes
+
+> as a user, i can rate the recipes
+
 ![mobile-navigation](/readme/03-mobile-navigation.gif)
-- as a user, i can favorite a recipe
-- as a user, i can resume using the app form where i left in the previous session
+
+> as a user, i can favorite a recipe
+
+> as a user, i can resume using the app form where i left in the previous session
+
 ![tablet-navigation](/readme/04-tablet-navigation.gif)
-- as a user, i can use the app on devices of different sizes an aspect-ratio
+
+> as a user, i can use the app on devices of different sizes an aspect-ratio
+
 ![tablet-landscape](/readme/05-tablet-landscape-navigation.gif)
-- as a user, i can logout
+
+> as a user, i can logout
 
 ## Contact
 * e-mail: ravalico.giovanni@gmail.com
@@ -187,11 +237,5 @@ MIT © [suddenlyGiovanni]
 [//]: # (Tech Stack references:)
    [React.js]: <https://reactjs.org/docs/installation.html>
    [Node.js]: <https://nodejs.org/dist/latest-v8.x/docs/api/>
-   [PostgreSQL]: <https://www.postgresql.org/docs/10/static/index.html>
    [Redux.js]: <http://redux.js.org/>
    [Express.js]: <http://expressjs.com/en/4x/api.html>
-   [AWS S3]: <https://aws.amazon.com/documentation/s3/>
-   [Socket.io - client]: <https://socket.io/docs/server-api/>
-   [Socket.io - server]: <https://socket.io/docs/server-api/>
-   [PeerJs - WebRTC]: <http://peerjs.com/docs/#api>
-   [Material-UI]: <http://www.material-ui.com/#/>
