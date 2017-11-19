@@ -1,5 +1,6 @@
 // REACT
 import React from 'react';
+import { Link } from 'react-router';
 
 // higher order component that wrap LOGIN && REGISTRATION
 import FormWrapper from './form-wrapper';
@@ -14,6 +15,7 @@ const Login = props => {
         handleSubmit,
         signupSuccess,
         loginError } = props;
+
 
     return (
         <div>
@@ -81,6 +83,20 @@ const Login = props => {
                                 type='submit'>
                                 Login
                             </button>
+
+                            <div className='col-xs-12 or-container'>
+                                <div>
+                                    <div className='or-separator'>
+                                        <span>or</span>
+                                        <hr/>
+                                    </div>
+                                </div>
+
+                                <div className='or-action'>
+                                    <span>New user?</span>
+                                    <Link to='/signup'>Sign up</Link>
+                                </div>
+                            </div>
 
                         </div>
 

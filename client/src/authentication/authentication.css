@@ -69,11 +69,11 @@ h4 {
 }
 
 .text-danger {
-    color: #a94442;
+  color : #a94442;
 }
 
 .text-success {
-    color: #91c11e;
+  color : #91c11e;
 }
 
 .btn {
@@ -90,4 +90,40 @@ h4 {
   line-height      : 1.28571;
   white-space      : nowrap;
   cursor           : pointer;
+}
+
+.or-container {
+  width      : 100%;
+  text-align : right;
+}
+
+.or-separator {
+  position    : relative;
+  height      : 35px;
+  background  : 0 0;
+  text-align  : center;
+  font-weight : 700;
+}
+
+.or-separator span {
+  display          : inline-block;
+  padding          : 8px;
+  background-color : #fff;
+}
+
+.or-separator hr {
+  width  : 90%;
+  margin : -16px auto 10px;
+}
+
+.or-action span {
+  margin-right : 5px;
+  font-family  : 'Source Sans Pro',
+                 sans-serif;
+}
+
+.or-action {
+  padding     : 0 15px;
+  font-family : 'Source Sans Pro',
+                sans-serif;
 }
