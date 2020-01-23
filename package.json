@@ -10,7 +10,7 @@
         "client": "node ./server/bin/start-client.js"
     },
     "dependencies": {
-        "axios": "^0.17.0",
+        "axios": "^0.19.2",
         "bcrypt": "^1.0.3",
         "body-parser": "~1.18.2",
         "compression": "^1.7.1",
