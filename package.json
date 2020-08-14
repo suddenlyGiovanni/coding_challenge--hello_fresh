@@ -32,6 +32,6 @@
         "concurrently": "^3.5.0",
         "eslint": "^4.10.0",
         "eslint-plugin-react": "^7.4.0",
-        "nodemon": "^1.12.1"
+        "nodemon": "^2.0.4"
     }
 }
